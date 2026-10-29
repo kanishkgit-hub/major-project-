@@ -1,0 +1,6 @@
+chromadb
+PyMuPDF
+requests
+fastapi
+uvicorn
+pytest
