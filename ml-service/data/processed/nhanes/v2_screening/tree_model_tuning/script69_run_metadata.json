@@ -1,0 +1,84 @@
+{
+    "script": "69_tune_tree_models.py",
+    "timestamp_utc": "2026-11-15T14:03:50.527205+00:00",
+    "datasets": [
+        "HbA1c",
+        "FPG"
+    ],
+    "outer_cv": {
+        "folds": 5,
+        "repetitions": 10,
+        "assignment_source": "Script 62"
+    },
+    "inner_cv": {
+        "folds": 3,
+        "selection_metric": "average_precision"
+    },
+    "models": {
+        "RandomForest": [
+            {
+                "n_estimators": 300,
+                "max_depth": 3,
+                "min_samples_leaf": 10,
+                "max_features": "sqrt"
+            },
+            {
+                "n_estimators": 300,
+                "max_depth": 5,
+                "min_samples_leaf": 10,
+                "max_features": "sqrt"
+            },
+            {
+                "n_estimators": 300,
+                "max_depth": 5,
+                "min_samples_leaf": 5,
+                "max_features": "sqrt"
+            },
+            {
+                "n_estimators": 300,
+                "max_depth": null,
+                "min_samples_leaf": 10,
+                "max_features": "sqrt"
+            }
+        ],
+        "XGBoost": [
+            {
+                "n_estimators": 200,
+                "max_depth": 2,
+                "learning_rate": 0.03,
+                "subsample": 0.8,
+                "colsample_bytree": 0.8,
+                "reg_lambda": 5.0
+            },
+            {
+                "n_estimators": 300,
+                "max_depth": 2,
+                "learning_rate": 0.03,
+                "subsample": 0.8,
+                "colsample_bytree": 0.8,
+                "reg_lambda": 5.0
+            },
+            {
+                "n_estimators": 200,
+                "max_depth": 3,
+                "learning_rate": 0.05,
+                "subsample": 0.8,
+                "colsample_bytree": 0.8,
+                "reg_lambda": 10.0
+            },
+            {
+                "n_estimators": 300,
+                "max_depth": 3,
+                "learning_rate": 0.03,
+                "subsample": 0.8,
+                "colsample_bytree": 0.8,
+                "reg_lambda": 10.0
+            }
+        ]
+    },
+    "threshold": 0.5,
+    "class_weight": null,
+    "smote": false,
+    "total_outer_evaluations": 400,
+    "note": "Hyperparameters are selected within outer training folds using inner CV. Outer validation folds are reserved for evaluation. These are internal development estimates."
+}

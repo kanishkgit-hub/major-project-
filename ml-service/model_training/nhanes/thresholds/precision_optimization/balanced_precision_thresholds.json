@@ -1,0 +1,16 @@
+{
+    "hba1c_primary": {
+        "model": "random_forest",
+        "calibration": "isotonic",
+        "threshold": 0.13953488372093023,
+        "selection_strategy": "maximum_f1",
+        "minimum_recall": 0.7
+    },
+    "fpg_primary": {
+        "model": "logistic_regression",
+        "calibration": "sigmoid",
+        "threshold": 0.12293772393205799,
+        "selection_strategy": "maximum_f1",
+        "minimum_recall": 0.7
+    }
+}

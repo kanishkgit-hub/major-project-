@@ -1,0 +1,39 @@
+{
+    "hba1c": {
+        "total_records": 25729,
+        "unique_participants": 25729,
+        "duplicate_participant_ids": 0,
+        "missing_age": 0,
+        "missing_weight": 0,
+        "non_positive_weight": 0,
+        "minimum_age": 12.0,
+        "maximum_age": 80.0,
+        "class_distribution": {
+            "Normal": 16544,
+            "Prediabetes": 6410,
+            "Diabetes": 2775
+        }
+    },
+    "fasting_glucose": {
+        "total_records": 11742,
+        "unique_participants": 11742,
+        "duplicate_participant_ids": 0,
+        "missing_age": 0,
+        "missing_weight": 0,
+        "non_positive_weight": 0,
+        "minimum_age": 12.0,
+        "maximum_age": 80.0,
+        "class_distribution": {
+            "Normal": 5561,
+            "Prediabetes": 4784,
+            "Diabetes": 1397
+        }
+    },
+    "participant_overlap": {
+        "hba1c_unique": 25729,
+        "glucose_unique": 11742,
+        "overlap": 11732,
+        "hba1c_only": 13997,
+        "glucose_only": 10
+    }
+}

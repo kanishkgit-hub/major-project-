@@ -1,0 +1,26 @@
+{
+  "HbA1c": {
+    "rows": 4677,
+    "positives": 115,
+    "C": 1.0,
+    "threshold_median": 0.0228892075345975,
+    "threshold_min": 0.020321498653080104,
+    "threshold_max": 0.026476084554806097,
+    "share_folds_recall_floor_met": 1.0
+  },
+  "FPG": {
+    "rows": 2599,
+    "positives": 111,
+    "C": 10.0,
+    "threshold_median": 0.03805780873558835,
+    "threshold_min": 0.033541397096404295,
+    "threshold_max": 0.042825609806915216,
+    "share_folds_recall_floor_met": 1.0
+  },
+  "notes": {
+    "created": "2026-11-16T21:46:49",
+    "design": "5-fold x 10 repeats; thresholds chosen in inner folds; metrics from repeat-averaged flags",
+    "interpretation": "Descriptive subgroup performance. No formal interaction tests; subgroups with fewer than 20 positives are unreliable. Unweighted analysis.",
+    "sex_coding_assumed": "1 = male, 2 = female"
+  }
+}

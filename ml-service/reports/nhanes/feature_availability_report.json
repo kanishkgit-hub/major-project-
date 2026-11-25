@@ -1,0 +1,166 @@
+{
+    "dataset_shape": {
+        "rows": 41333,
+        "columns": 174
+    },
+    "available_requested_features": [
+        "RIDAGEYR",
+        "RIAGENDR",
+        "RIDRETH1",
+        "RIDRETH3",
+        "DMDEDUC2",
+        "DMDMARTL",
+        "INDFMPIR",
+        "BMX_BMXBMI",
+        "BMX_BMXHT",
+        "BMX_BMXWT",
+        "BMX_BMXWAIST",
+        "BMX_BMXHIP",
+        "BPXO_BPXOSY1",
+        "BPXO_BPXOSY2",
+        "BPXO_BPXOSY3",
+        "BPXO_BPXODI1",
+        "BPXO_BPXODI2",
+        "BPXO_BPXODI3",
+        "BPQ_BPQ020",
+        "BPQ_BPQ030",
+        "BPQ_BPQ080",
+        "PAQ_PAD680",
+        "SMQ_SMQ020",
+        "SMQ_SMQ040",
+        "ALQ_ALQ111",
+        "ALQ_ALQ121",
+        "ALQ_ALQ130",
+        "ALQ_ALQ142",
+        "DIQ_DIQ010",
+        "DIQ_DIQ050",
+        "DIQ_DIQ160",
+        "DIQ_DIQ170",
+        "DIQ_DIQ172",
+        "DIQ_DIQ180",
+        "GHB_LBXGH",
+        "GLU_LBXGLU",
+        "GLU_LBDGLUSI"
+    ],
+    "unavailable_requested_features": [
+        "BPXO_BPXOSY4",
+        "BPXO_BPXODI4",
+        "BPQ_BPQ040A",
+        "BPQ_BPQ050A",
+        "PAQ_PAQ605",
+        "PAQ_PAQ620",
+        "PAQ_PAQ635",
+        "PAQ_PAQ650",
+        "PAQ_PAQ665",
+        "SMQ_SMQ050Q",
+        "SMQ_SMQ050U"
+    ],
+    "component_summary": [
+        {
+            "component": "DEMO",
+            "total_columns": 6,
+            "columns_with_data": 6,
+            "columns_fully_missing": 0
+        },
+        {
+            "component": "BMX",
+            "total_columns": 21,
+            "columns_with_data": 20,
+            "columns_fully_missing": 1
+        },
+        {
+            "component": "BPXO",
+            "total_columns": 11,
+            "columns_with_data": 11,
+            "columns_fully_missing": 0
+        },
+        {
+            "component": "BPQ",
+            "total_columns": 5,
+            "columns_with_data": 5,
+            "columns_fully_missing": 0
+        },
+        {
+            "component": "PAQ",
+            "total_columns": 7,
+            "columns_with_data": 7,
+            "columns_fully_missing": 0
+        },
+        {
+            "component": "SMQ",
+            "total_columns": 8,
+            "columns_with_data": 8,
+            "columns_fully_missing": 0
+        },
+        {
+            "component": "ALQ",
+            "total_columns": 8,
+            "columns_with_data": 8,
+            "columns_fully_missing": 0
+        },
+        {
+            "component": "DIQ",
+            "total_columns": 53,
+            "columns_with_data": 53,
+            "columns_fully_missing": 0
+        },
+        {
+            "component": "GHB",
+            "total_columns": 2,
+            "columns_with_data": 2,
+            "columns_fully_missing": 0
+        },
+        {
+            "component": "GLU",
+            "total_columns": 5,
+            "columns_with_data": 5,
+            "columns_fully_missing": 0
+        }
+    ],
+    "feature_groups": {
+        "Demographics": {
+            "requested": 7,
+            "available": 7
+        },
+        "Body Measurements": {
+            "requested": 5,
+            "available": 5
+        },
+        "Blood Pressure Measurements": {
+            "requested": 8,
+            "available": 6
+        },
+        "Hypertension History": {
+            "requested": 5,
+            "available": 3
+        },
+        "Physical Activity": {
+            "requested": 6,
+            "available": 1
+        },
+        "Smoking": {
+            "requested": 4,
+            "available": 2
+        },
+        "Alcohol": {
+            "requested": 4,
+            "available": 4
+        },
+        "Diabetes History": {
+            "requested": 6,
+            "available": 6
+        },
+        "Laboratory Measurements": {
+            "requested": 3,
+            "available": 3
+        }
+    },
+    "important_notes": [
+        "Availability does not imply clinical usefulness.",
+        "Some components are only present in selected NHANES cycles.",
+        "Missingness may reflect survey design or participant eligibility.",
+        "Categorical response codes require codebook interpretation.",
+        "Diabetes history variables require leakage review.",
+        "Laboratory target measurements must not be used as predictors."
+    ]
+}

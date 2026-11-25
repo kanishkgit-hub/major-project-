@@ -1,0 +1,175 @@
+feature_name,data_type,feature_group,total_records,available_values,missing_values,missing_percentage,unique_values,sample_values,official_description,minimum,maximum,available_2013-2014,availability_pct_2013-2014,available_2015-2016,availability_pct_2015-2016,available_2017-2018,availability_pct_2017-2018,available_2021-2023,availability_pct_2021-2023
+CYCLE,str,Survey Identification,41333,41333,0,0.0,4,"2013-2014, 2015-2016, 2017-2018, 2021-2023",Pending codebook verification,,,10175,100.0,9971,100.0,9254,100.0,11933,100.0
+SEQN,float64,Survey Identification,41333,41333,0,0.0,41333,"73557.0, 73558.0, 73559.0, 73560.0, 73561.0",Pending codebook verification,73557.0,142310.0,10175,100.0,9971,100.0,9254,100.0,11933,100.0
+SDDSRVYR,float64,Survey Identification,41333,41333,0,0.0,4,"8.0, 9.0, 10.0, 12.0",Pending codebook verification,8.0,12.0,10175,100.0,9971,100.0,9254,100.0,11933,100.0
+RIDSTATR,float64,Demographics,41333,41333,0,0.0,2,"2.0, 1.0",Pending codebook verification,1.0,2.0,10175,100.0,9971,100.0,9254,100.0,11933,100.0
+RIAGENDR,float64,Demographics,41333,41333,0,0.0,2,"1.0, 2.0",Pending codebook verification,1.0,2.0,10175,100.0,9971,100.0,9254,100.0,11933,100.0
+RIDAGEYR,float64,Demographics,41333,39986,1347,3.26,80,"69.0, 54.0, 72.0, 9.0, 73.0",Pending codebook verification,1.0,80.0,9770,96.02,9575,96.03,8897,96.14,11744,98.42
+RIDAGEMN,float64,Demographics,41333,2230,39103,94.6,24,"5.0, 10.0, 18.0, 23.0, 1.0",Pending codebook verification,1.0,24.0,645,6.34,664,6.66,561,6.06,360,3.02
+RIDRETH1,float64,Demographics,41333,41333,0,0.0,5,"4.0, 3.0, 1.0, 2.0, 5.0",Pending codebook verification,1.0,5.0,10175,100.0,9971,100.0,9254,100.0,11933,100.0
+RIDRETH3,float64,Demographics,41333,41333,0,0.0,6,"4.0, 3.0, 1.0, 2.0, 7.0",Pending codebook verification,1.0,7.0,10175,100.0,9971,100.0,9254,100.0,11933,100.0
+RIDEXMON,float64,Demographics,41333,36921,4412,10.67,2,"1.0, 2.0",Pending codebook verification,1.0,2.0,9813,96.44,9544,95.72,8704,94.06,8860,74.25
+RIDEXAGM,float64,Demographics,41333,14465,26868,65.0,239,"119.0, 6.0, 109.0, 125.0, 128.0",Pending codebook verification,1.0,239.0,4209,41.37,4050,40.62,3423,36.99,2783,23.32
+DMQMILIZ,float64,Other / Unclassified,41333,26715,14618,35.37,4,"1.0, 2.0, 7.0, 9.0",Pending codebook verification,1.0,9.0,6261,61.53,6149,61.67,6004,64.88,8301,69.56
+DMQADFC,float64,Other / Unclassified,41333,1631,39702,96.05,4,"1.0, 2.0, 9.0, 7.0",Pending codebook verification,1.0,9.0,543,5.34,527,5.29,561,6.06,0,0.0
+DMDBORN4,float64,Demographics,41333,41314,19,0.05,4,"1.0, 2.0, 77.0, 99.0",Pending codebook verification,1.0,99.0,10175,100.0,9971,100.0,9254,100.0,11914,99.84
+DMDCITZN,float64,Demographics,41333,29391,11942,28.89,4,"1.0, 2.0, 7.0, 9.0",Pending codebook verification,1.0,9.0,10171,99.96,9969,99.98,9251,99.97,0,0.0
+DMDYRSUS,float64,Demographics,41333,6092,35241,85.26,11,"4.0, 6.0, 3.0, 7.0, 2.0",Pending codebook verification,1.0,99.0,1908,18.75,2236,22.43,1948,21.05,0,0.0
+DMDEDUC3,float64,Demographics,41333,7056,34277,82.93,18,"3.0, 2.0, 4.0, 9.0, 15.0",Pending codebook verification,1.0,99.0,2526,24.83,2408,24.15,2122,22.93,0,0.0
+DMDEDUC2,float64,Demographics,41333,24851,16482,39.88,7,"3.0, 4.0, 5.0, 2.0, 1.0",Pending codebook verification,1.0,9.0,5769,56.7,5719,57.36,5569,60.18,7794,65.31
+DMDMARTL,float64,Demographics,41333,17057,24276,58.73,8,"4.0, 1.0, 3.0, 2.0, 5.0",Pending codebook verification,1.0,99.0,5769,56.7,5719,57.36,5569,60.18,0,0.0
+RIDEXPRG,float64,Demographics,41333,5210,36123,87.4,3,"2.0, 1.0, 3.0",Pending codebook verification,1.0,3.0,1309,12.86,1288,12.92,1110,11.99,1503,12.6
+SIALANG,float64,Other / Unclassified,41333,29400,11933,28.87,2,"1.0, 2.0",Pending codebook verification,1.0,2.0,10175,100.0,9971,100.0,9254,100.0,0,0.0
+SIAPROXY,float64,Other / Unclassified,41333,29398,11935,28.88,2,"2.0, 1.0",Pending codebook verification,1.0,2.0,10174,99.99,9970,99.99,9254,100.0,0,0.0
+SIAINTRP,float64,Other / Unclassified,41333,29400,11933,28.87,2,"2.0, 1.0",Pending codebook verification,1.0,2.0,10175,100.0,9971,100.0,9254,100.0,0,0.0
+FIALANG,float64,Other / Unclassified,41333,28476,12857,31.11,2,"1.0, 2.0",Pending codebook verification,1.0,2.0,10054,98.81,9642,96.7,8780,94.88,0,0.0
+FIAPROXY,float64,Other / Unclassified,41333,28476,12857,31.11,2,"2.0, 1.0",Pending codebook verification,1.0,2.0,10054,98.81,9642,96.7,8780,94.88,0,0.0
+FIAINTRP,float64,Other / Unclassified,41333,28476,12857,31.11,2,"2.0, 1.0",Pending codebook verification,1.0,2.0,10054,98.81,9642,96.7,8780,94.88,0,0.0
+MIALANG,float64,Other / Unclassified,41333,20972,20361,49.26,2,"1.0, 2.0",Pending codebook verification,1.0,2.0,7311,71.85,6977,69.97,6684,72.23,0,0.0
+MIAPROXY,float64,Other / Unclassified,41333,20974,20359,49.26,2,"2.0, 1.0",Pending codebook verification,1.0,2.0,7312,71.86,6978,69.98,6684,72.23,0,0.0
+MIAINTRP,float64,Other / Unclassified,41333,20975,20358,49.25,2,"2.0, 1.0",Pending codebook verification,1.0,2.0,7313,71.87,6978,69.98,6684,72.23,0,0.0
+AIALANGA,float64,Other / Unclassified,41333,17256,24077,58.25,3,"1.0, 2.0, 3.0",Pending codebook verification,1.0,3.0,6317,62.08,5962,59.79,4977,53.78,0,0.0
+DMDHHSIZ,float64,Demographics,41333,41333,0,0.0,7,"3.0, 4.0, 2.0, 1.0, 7.0",Pending codebook verification,1.0,7.0,10175,100.0,9971,100.0,9254,100.0,11933,100.0
+DMDFMSIZ,float64,Demographics,41333,29400,11933,28.87,7,"3.0, 4.0, 2.0, 1.0, 7.0",Pending codebook verification,1.0,7.0,10175,100.0,9971,100.0,9254,100.0,0,0.0
+DMDHHSZA,float64,Demographics,41333,10502,30831,74.59,3,"1.0, 3.0, 2.0",Pending codebook verification,1.0,3.0,3758,36.93,3673,36.84,3071,33.19,0,0.0
+DMDHHSZB,float64,Demographics,41333,15006,26327,63.69,4,"2.0, 1.0, 3.0, 4.0",Pending codebook verification,1.0,4.0,5268,51.77,5256,52.71,4482,48.43,0,0.0
+DMDHHSZE,float64,Demographics,41333,8740,32593,78.85,3,"2.0, 1.0, 3.0",Pending codebook verification,1.0,3.0,2791,27.43,2820,28.28,3129,33.81,0,0.0
+DMDHRGND,float64,Demographics,41333,33515,7818,18.91,2,"1.0, 2.0",Pending codebook verification,1.0,2.0,10175,100.0,9971,100.0,9254,100.0,4115,34.48
+DMDHRAGE,float64,Demographics,41333,20146,21187,51.26,63,"69.0, 54.0, 72.0, 33.0, 78.0",Pending codebook verification,18.0,80.0,10175,100.0,9971,100.0,0,0.0,0,0.0
+DMDHRBR4,float64,Demographics,41333,19453,21880,52.94,4,"1.0, 2.0, 77.0, 99.0",Pending codebook verification,1.0,99.0,9878,97.08,9575,96.03,0,0.0,0,0.0
+DMDHREDU,float64,Demographics,41333,19456,21877,52.93,7,"3.0, 4.0, 5.0, 2.0, 1.0",Pending codebook verification,1.0,9.0,9881,97.11,9575,96.03,0,0.0,0,0.0
+DMDHRMAR,float64,Demographics,41333,19961,21372,51.71,8,"4.0, 1.0, 3.0, 2.0, 5.0",Pending codebook verification,1.0,99.0,10052,98.79,9909,99.38,0,0.0,0,0.0
+DMDHSEDU,float64,Demographics,41333,10568,30765,74.43,7,"1.0, 3.0, 4.0, 5.0, 2.0",Pending codebook verification,1.0,9.0,5342,52.5,5226,52.41,0,0.0,0,0.0
+WTINT2YR,float64,Survey Weights,41333,41333,0,0.0,32178,"13281.237386, 23682.057386, 57214.803319, 55201.178592, 63709.667069",Pending codebook verification,2571.068712346633,433085.0052624958,10175,100.0,9971,100.0,9254,100.0,11933,100.0
+WTMEC2YR,float64,Survey Weights,41333,36921,4412,10.67,31832,"13481.042095, 24471.769625, 57193.285376, 55766.512438, 65541.871229",Pending codebook verification,2566.183854483138,419762.836487576,9813,96.44,9544,95.72,8704,94.06,8860,74.25
+SDMVPSU,float64,Survey Identification,41333,41333,0,0.0,2,"1.0, 2.0",Pending codebook verification,1.0,2.0,10175,100.0,9971,100.0,9254,100.0,11933,100.0
+SDMVSTRA,float64,Survey Identification,41333,41333,0,0.0,60,"112.0, 108.0, 109.0, 116.0, 111.0",Pending codebook verification,104.0,187.0,10175,100.0,9971,100.0,9254,100.0,11933,100.0
+INDHHIN2,float64,Other / Unclassified,41333,28431,12902,31.21,16,"4.0, 7.0, 10.0, 9.0, 15.0",Pending codebook verification,1.0,99.0,10042,98.69,9626,96.54,8763,94.69,0,0.0
+INDFMIN2,float64,Other / Unclassified,41333,28474,12859,31.11,16,"4.0, 7.0, 10.0, 9.0, 15.0",Pending codebook verification,1.0,99.0,10052,98.79,9642,96.7,8780,94.88,0,0.0
+INDFMPIR,float64,Demographics,41333,35836,5497,13.3,500,"0.84, 1.78, 4.51, 2.52, 5.0",Pending codebook verification,0.01,5.0,9285,91.25,8827,88.53,7932,85.71,9792,82.06
+DIQ_DIQ010,float64,Diabetes Questionnaire,41333,39981,1352,3.27,5,"1.0, 2.0, 3.0, 9.0, 7.0",Pending codebook verification,1.0,9.0,9769,96.01,9575,96.03,8897,96.14,11740,98.38
+DIQ_DID040,float64,Diabetes Questionnaire,41333,3563,37770,91.38,82,"62.0, 23.0, 57.0, 68.0, 17.0",Pending codebook verification,1.0,999.0,737,7.24,853,8.55,892,9.64,1081,9.06
+DIQ_DIQ160,float64,Diabetes Questionnaire,41333,26048,15285,36.98,3,"2.0, 1.0, 9.0",Pending codebook verification,1.0,9.0,6287,61.79,6045,60.63,5694,61.53,8022,67.23
+DIQ_DIQ170,float64,Diabetes Questionnaire,41333,18531,22802,55.17,3,"2.0, 1.0, 9.0",Pending codebook verification,1.0,9.0,6469,63.58,6186,62.04,5876,63.5,0,0.0
+DIQ_DIQ172,float64,Diabetes Questionnaire,41333,18531,22802,55.17,4,"2.0, 1.0, 9.0, 7.0",Pending codebook verification,1.0,9.0,6469,63.58,6186,62.04,5876,63.5,0,0.0
+DIQ_DIQ175A,float64,Diabetes Questionnaire,41333,3669,37664,91.12,2,"10.0, 99.0",Pending codebook verification,10.0,99.0,1338,13.15,1186,11.89,1145,12.37,0,0.0
+DIQ_DIQ175B,float64,Diabetes Questionnaire,41333,1804,39529,95.64,1,11.0,Pending codebook verification,11.0,11.0,546,5.37,601,6.03,657,7.1,0,0.0
+DIQ_DIQ175C,float64,Diabetes Questionnaire,41333,489,40844,98.82,1,12.0,Pending codebook verification,12.0,12.0,112,1.1,160,1.6,217,2.34,0,0.0
+DIQ_DIQ175D,float64,Diabetes Questionnaire,41333,1317,40016,96.81,1,13.0,Pending codebook verification,13.0,13.0,370,3.64,459,4.6,488,5.27,0,0.0
+DIQ_DIQ175E,float64,Diabetes Questionnaire,41333,424,40909,98.97,1,14.0,Pending codebook verification,14.0,14.0,92,0.9,155,1.55,177,1.91,0,0.0
+DIQ_DIQ175F,float64,Diabetes Questionnaire,41333,112,41221,99.73,1,15.0,Pending codebook verification,15.0,15.0,21,0.21,53,0.53,38,0.41,0,0.0
+DIQ_DIQ175G,float64,Diabetes Questionnaire,41333,749,40584,98.19,1,16.0,Pending codebook verification,16.0,16.0,151,1.48,280,2.81,318,3.44,0,0.0
+DIQ_DIQ175H,float64,Diabetes Questionnaire,41333,700,40633,98.31,1,17.0,Pending codebook verification,17.0,17.0,151,1.48,258,2.59,291,3.14,0,0.0
+DIQ_DIQ175I,float64,Diabetes Questionnaire,41333,223,41110,99.46,1,18.0,Pending codebook verification,18.0,18.0,70,0.69,77,0.77,76,0.82,0,0.0
+DIQ_DIQ175J,float64,Diabetes Questionnaire,41333,420,40913,98.98,1,19.0,Pending codebook verification,19.0,19.0,107,1.05,150,1.5,163,1.76,0,0.0
+DIQ_DIQ175K,float64,Diabetes Questionnaire,41333,99,41234,99.76,1,20.0,Pending codebook verification,20.0,20.0,39,0.38,31,0.31,29,0.31,0,0.0
+DIQ_DIQ175L,float64,Diabetes Questionnaire,41333,170,41163,99.59,1,21.0,Pending codebook verification,21.0,21.0,40,0.39,59,0.59,71,0.77,0,0.0
+DIQ_DIQ175M,float64,Diabetes Questionnaire,41333,384,40949,99.07,1,22.0,Pending codebook verification,22.0,22.0,91,0.89,138,1.38,155,1.67,0,0.0
+DIQ_DIQ175N,float64,Diabetes Questionnaire,41333,273,41060,99.34,1,23.0,Pending codebook verification,23.0,23.0,51,0.5,109,1.09,113,1.22,0,0.0
+DIQ_DIQ175O,float64,Diabetes Questionnaire,41333,386,40947,99.07,1,24.0,Pending codebook verification,24.0,24.0,85,0.84,134,1.34,167,1.8,0,0.0
+DIQ_DIQ175P,float64,Diabetes Questionnaire,41333,329,41004,99.2,1,25.0,Pending codebook verification,25.0,25.0,69,0.68,117,1.17,143,1.55,0,0.0
+DIQ_DIQ175Q,float64,Diabetes Questionnaire,41333,410,40923,99.01,1,26.0,Pending codebook verification,26.0,26.0,102,1.0,136,1.36,172,1.86,0,0.0
+DIQ_DIQ175R,float64,Diabetes Questionnaire,41333,62,41271,99.85,1,27.0,Pending codebook verification,27.0,27.0,20,0.2,23,0.23,19,0.21,0,0.0
+DIQ_DIQ175S,float64,Diabetes Questionnaire,41333,98,41235,99.76,1,28.0,Pending codebook verification,28.0,28.0,30,0.29,31,0.31,37,0.4,0,0.0
+DIQ_DIQ175T,float64,Diabetes Questionnaire,41333,277,41056,99.33,1,29.0,Pending codebook verification,29.0,29.0,56,0.55,105,1.05,116,1.25,0,0.0
+DIQ_DIQ175U,float64,Diabetes Questionnaire,41333,265,41068,99.36,1,30.0,Pending codebook verification,30.0,30.0,73,0.72,79,0.79,113,1.22,0,0.0
+DIQ_DIQ175V,float64,Diabetes Questionnaire,41333,37,41296,99.91,1,31.0,Pending codebook verification,31.0,31.0,12,0.12,11,0.11,14,0.15,0,0.0
+DIQ_DIQ175W,float64,Diabetes Questionnaire,41333,12,41321,99.97,1,32.0,Pending codebook verification,32.0,32.0,3,0.03,4,0.04,5,0.05,0,0.0
+DIQ_DIQ175X,float64,Diabetes Questionnaire,41333,9,41324,99.98,1,33.0,Pending codebook verification,33.0,33.0,6,0.06,1,0.01,2,0.02,0,0.0
+DIQ_DIQ180,float64,Diabetes Questionnaire,41333,26835,14498,35.08,4,"1.0, 2.0, 9.0, 7.0",Pending codebook verification,1.0,9.0,6469,63.58,6186,62.04,5876,63.5,8304,69.59
+DIQ_DIQ050,float64,Diabetes Questionnaire,41333,29321,12012,29.06,4,"1.0, 2.0, 7.0, 9.0",Pending codebook verification,1.0,9.0,9768,96.0,9575,96.03,8897,96.14,1081,9.06
+DIQ_DID060,float64,Diabetes Questionnaire,41333,1073,40260,97.4,54,"5.0, 1.0, 16.0, 17.0, 6.0",Pending codebook verification,1.0,999.0,220,2.16,256,2.57,254,2.74,343,2.87
+DIQ_DIQ060U,float64,Diabetes Questionnaire,41333,1043,40290,97.48,2,"2.0, 1.0",Pending codebook verification,1.0,2.0,217,2.13,249,2.5,245,2.65,332,2.78
+DIQ_DIQ070,float64,Diabetes Questionnaire,41333,6670,34663,83.86,4,"1.0, 2.0, 9.0, 7.0",Pending codebook verification,1.0,9.0,1200,11.79,1515,15.19,1674,18.09,2281,19.12
+DIQ_DIQ230,float64,Diabetes Questionnaire,41333,2482,38851,94.0,6,"1.0, 5.0, 2.0, 4.0, 3.0",Pending codebook verification,1.0,9.0,737,7.24,853,8.55,892,9.64,0,0.0
+DIQ_DIQ240,float64,Diabetes Questionnaire,41333,2482,38851,94.0,3,"1.0, 2.0, 9.0",Pending codebook verification,1.0,9.0,737,7.24,853,8.55,892,9.64,0,0.0
+DIQ_DID250,float64,Diabetes Questionnaire,41333,1869,39464,95.48,26,"2.0, 6.0, 3.0, 4.0, 12.0",Pending codebook verification,1.0,9999.0,554,5.44,630,6.32,685,7.4,0,0.0
+DIQ_DID260,float64,Diabetes Questionnaire,41333,1973,39360,95.23,16,"1.0, 3.0, 2.0, 4.0, 210.0",Pending codebook verification,1.0,999.0,597,5.87,661,6.63,715,7.73,0,0.0
+DIQ_DIQ260U,float64,Diabetes Questionnaire,41333,1965,39368,95.25,4,"1.0, 3.0, 2.0, 4.0",Pending codebook verification,1.0,4.0,591,5.81,661,6.63,713,7.7,0,0.0
+DIQ_DIQ275,float64,Diabetes Questionnaire,41333,2482,38851,94.0,4,"1.0, 9.0, 2.0, 7.0",Pending codebook verification,1.0,9.0,737,7.24,853,8.55,892,9.64,0,0.0
+DIQ_DIQ280,float64,Diabetes Questionnaire,41333,1908,39425,95.38,87,"12.0, 14.0, 6.2, 999.0, 6.1",Pending codebook verification,2.0,999.0,520,5.11,641,6.43,747,8.07,0,0.0
+DIQ_DIQ291,float64,Diabetes Questionnaire,41333,1910,39423,95.38,8,"99.0, 3.0, 2.0, 1.0, 6.0",Pending codebook verification,1.0,99.0,520,5.11,641,6.43,749,8.09,0,0.0
+DIQ_DIQ300S,float64,Diabetes Questionnaire,41333,2461,38872,94.05,107,"9999.0, 128.0, 136.0, 140.0, 120.0",Pending codebook verification,58.0,9999.0,732,7.19,845,8.47,884,9.55,0,0.0
+DIQ_DIQ300D,float64,Diabetes Questionnaire,41333,2461,38872,94.05,88,"9999.0, 82.0, 89.0, 64.0, 80.0",Pending codebook verification,5.0,9999.0,732,7.19,845,8.47,884,9.55,0,0.0
+DIQ_DID310S,float64,Diabetes Questionnaire,41333,2464,38869,94.04,54,"6666.0, 9999.0, 120.0, 110.0, 128.0",Pending codebook verification,70.0,9999.0,732,7.19,846,8.48,886,9.57,0,0.0
+DIQ_DID310D,float64,Diabetes Questionnaire,41333,2464,38869,94.04,51,"6666.0, 9999.0, 65.0, 70.0, 80.0",Pending codebook verification,5.0,9999.0,732,7.19,846,8.48,886,9.57,0,0.0
+DIQ_DID320,float64,Diabetes Questionnaire,41333,2463,38870,94.04,154,"5555.0, 147.0, 9999.0, 190.0, 59.0",Pending codebook verification,4.0,9999.0,732,7.19,846,8.48,885,9.56,0,0.0
+DIQ_DID330,float64,Diabetes Questionnaire,41333,2210,39123,94.65,53,"147.0, 6666.0, 9999.0, 100.0, 90.0",Pending codebook verification,2.0,9999.0,626,6.15,753,7.55,831,8.98,0,0.0
+DIQ_DID341,float64,Diabetes Questionnaire,41333,1758,39575,95.75,31,"2.0, 6.0, 1.0, 3.0, 4.0",Pending codebook verification,1.0,9999.0,519,5.1,601,6.03,638,6.89,0,0.0
+DIQ_DID350,float64,Diabetes Questionnaire,41333,2020,39313,95.11,16,"1.0, 2.0, 3.0, 4.0, 9999.0",Pending codebook verification,1.0,9999.0,602,5.92,704,7.06,714,7.72,0,0.0
+DIQ_DIQ350U,float64,Diabetes Questionnaire,41333,2008,39325,95.14,4,"1.0, 2.0, 3.0, 4.0",Pending codebook verification,1.0,4.0,597,5.87,699,7.01,712,7.69,0,0.0
+DIQ_DIQ360,float64,Diabetes Questionnaire,41333,2463,38870,94.04,6,"4.0, 1.0, 2.0, 5.0, 3.0",Pending codebook verification,1.0,9.0,732,7.19,846,8.48,885,9.56,0,0.0
+DIQ_DIQ080,float64,Diabetes Questionnaire,41333,2463,38870,94.04,3,"2.0, 1.0, 9.0",Pending codebook verification,1.0,9.0,732,7.19,846,8.48,885,9.56,0,0.0
+GHB_LBXGH,float64,HbA1c Laboratory,41333,25729,15604,37.75,121,"13.9, 9.1, 8.9, 4.9, 5.5",Pending codebook verification,3.2,17.5,6643,65.29,6326,63.44,6045,65.32,6715,56.27
+GLU_WTSAF2YR,float64,Glucose Laboratory,41333,11742,29591,71.59,11312,"142196.890197, 142266.006548, 134054.10976, 216002.505861, 33038.129679",Pending codebook verification,9133.518063,944153.249752,2927,28.77,2743,27.51,2711,29.3,3361,28.17
+GLU_LBXGLU,float64,Glucose Laboratory,41333,12707,28626,69.26,304,"193.0, 107.0, 110.0, 89.0, 84.0",Pending codebook verification,21.0,561.0,3172,31.17,2972,29.81,2891,31.24,3672,30.77
+GLU_LBDGLUSI,float64,Glucose Laboratory,41333,12707,28626,69.26,477,"10.713, 5.94, 6.106, 4.94, 4.663",Pending codebook verification,1.17,31.1,3172,31.17,2972,29.81,2891,31.24,3672,30.77
+GLU_PHAFSTHR,float64,Glucose Laboratory,41333,3227,38106,92.19,31,"15.0, 14.0, 11.0, 12.0, 10.0",Pending codebook verification,1.0,34.0,3227,31.71,0,0.0,0,0.0,0,0.0
+GLU_PHAFSTMN,float64,Glucose Laboratory,41333,3236,38097,92.17,59,"51.0, 42.0, 14.0, 9.0, 13.0",Pending codebook verification,1.0,59.0,3236,31.8,0,0.0,0,0.0,0,0.0
+DMDHRAGZ,float64,Demographics,41333,13378,27955,67.63,4,"2.0, 4.0, 3.0, 1.0",Pending codebook verification,1.0,4.0,0,0.0,0,0.0,9254,100.0,4124,34.56
+DMDHREDZ,float64,Demographics,41333,12510,28823,69.73,3,"3.0, 1.0, 2.0",Pending codebook verification,1.0,3.0,0,0.0,0,0.0,8764,94.7,3746,31.39
+DMDHRMAZ,float64,Demographics,41333,13083,28250,68.35,3,"1.0, 2.0, 3.0",Pending codebook verification,1.0,3.0,0,0.0,0,0.0,9063,97.94,4020,33.69
+DMDHSEDZ,float64,Demographics,41333,6878,34455,83.36,3,"3.0, 2.0, 1.0",Pending codebook verification,1.0,3.0,0,0.0,0,0.0,4751,51.34,2127,17.82
+DMDYRUSR,float64,Demographics,41333,1875,39458,95.46,8,"6.0, 5.0, 4.0, 99.0, 3.0",Pending codebook verification,1.0,99.0,0,0.0,0,0.0,0,0.0,1875,15.71
+DMDMARTZ,float64,Demographics,41333,7792,33541,81.15,5,"1.0, 3.0, 2.0, 99.0, 77.0",Pending codebook verification,1.0,99.0,0,0.0,0,0.0,0,0.0,7792,65.3
+GHB_WTPH2YR,float64,HbA1c Laboratory,41333,6750,34583,83.67,6599,"56042.12940958324, 37435.70564728485, 85328.84451856514, 44526.21413474371, 22746.296353200338",Pending codebook verification,4391.822057942744,241728.8572411242,0,0.0,0,0.0,0,0.0,6750,56.57
+BMX_BMDSTATS,float64,Body Measurements,41333,8860,32473,78.56,4,"1.0, 3.0, 4.0, 2.0",Pending codebook verification,1.0,4.0,0,0.0,0,0.0,0,0.0,8860,74.25
+BMX_BMXWT,float64,Body Measurements,41333,8754,32579,78.82,1389,"86.9, 101.8, 69.4, 34.3, 13.6",Pending codebook verification,2.7,248.2,0,0.0,0,0.0,0,0.0,8754,73.36
+BMX_BMIWT,float64,Body Measurements,41333,345,40988,99.17,3,"3.0, 4.0, 1.0",Pending codebook verification,1.0,4.0,0,0.0,0,0.0,0,0.0,345,2.89
+BMX_BMXRECUM,float64,Body Measurements,41333,454,40879,98.9,299,"109.9, 79.5, 79.8, 88.7, 91.1",Pending codebook verification,48.5,118.8,0,0.0,0,0.0,0,0.0,454,3.8
+BMX_BMIRECUM,float64,Body Measurements,41333,18,41315,99.96,1,1.0,Pending codebook verification,1.0,1.0,0,0.0,0,0.0,0,0.0,18,0.15
+BMX_BMXHEAD,float64,Body Measurements,41333,70,41263,99.83,49,"36.5, 41.2, 39.7, 43.9, 38.7",Pending codebook verification,34.4,46.5,0,0.0,0,0.0,0,0.0,70,0.59
+BMX_BMIHEAD,float64,Body Measurements,41333,0,41333,100.0,0,,Pending codebook verification,,,0,0.0,0,0.0,0,0.0,0,0.0
+BMX_BMXHT,float64,Body Measurements,41333,8499,32834,79.44,995,"179.5, 174.2, 152.9, 120.1, 173.3",Pending codebook verification,79.1,200.7,0,0.0,0,0.0,0,0.0,8499,71.22
+BMX_BMIHT,float64,Body Measurements,41333,134,41199,99.68,2,"1.0, 3.0",Pending codebook verification,1.0,3.0,0,0.0,0,0.0,0,0.0,134,1.12
+BMX_BMXBMI,float64,Body Measurements,41333,8471,32862,79.51,451,"27.0, 33.5, 29.7, 23.8, 30.2",Pending codebook verification,11.1,74.8,0,0.0,0,0.0,0,0.0,8471,70.99
+BMX_BMDBMIC,float64,Body Measurements,41333,2492,38841,93.97,4,"4.0, 3.0, 2.0, 1.0",Pending codebook verification,1.0,4.0,0,0.0,0,0.0,0,0.0,2492,20.88
+BMX_BMXLEG,float64,Body Measurements,41333,7335,33998,82.25,231,"42.8, 38.5, 36.1, 40.0, 36.2",Pending codebook verification,24.9,51.6,0,0.0,0,0.0,0,0.0,7335,61.47
+BMX_BMILEG,float64,Body Measurements,41333,396,40937,99.04,1,1.0,Pending codebook verification,1.0,1.0,0,0.0,0,0.0,0,0.0,396,3.32
+BMX_BMXARML,float64,Body Measurements,41333,8568,32765,79.27,351,"42.0, 38.7, 35.5, 25.4, 36.2",Pending codebook verification,10.0,49.2,0,0.0,0,0.0,0,0.0,8568,71.8
+BMX_BMIARML,float64,Body Measurements,41333,200,41133,99.52,1,1.0,Pending codebook verification,1.0,1.0,0,0.0,0,0.0,0,0.0,200,1.68
+BMX_BMXARMC,float64,Body Measurements,41333,8562,32771,79.29,391,"35.7, 33.7, 36.3, 23.4, 37.4",Pending codebook verification,12.0,63.3,0,0.0,0,0.0,0,0.0,8562,71.75
+BMX_BMIARMC,float64,Body Measurements,41333,205,41128,99.5,1,1.0,Pending codebook verification,1.0,1.0,0,0.0,0,0.0,0,0.0,205,1.72
+BMX_BMXWAIST,float64,Body Measurements,41333,8190,33143,80.19,1049,"98.3, 114.7, 93.5, 70.4, 106.1",Pending codebook verification,39.8,187.0,0,0.0,0,0.0,0,0.0,8190,68.63
+BMX_BMIWAIST,float64,Body Measurements,41333,347,40986,99.16,1,1.0,Pending codebook verification,1.0,1.0,0,0.0,0,0.0,0,0.0,347,2.91
+BMX_BMXHIP,float64,Body Measurements,41333,6776,34557,83.61,764,"102.9, 112.4, 98.0, 110.6, 148.9",Pending codebook verification,69.9,187.1,0,0.0,0,0.0,0,0.0,6776,56.78
+BMX_BMIHIP,float64,Body Measurements,41333,361,40972,99.13,1,1.0,Pending codebook verification,1.0,1.0,0,0.0,0,0.0,0,0.0,361,3.03
+BPXO_BPAOARM,str,Blood Pressure,41333,7654,33679,81.48,2,"R, L",Pending codebook verification,,,0,0.0,0,0.0,0,0.0,7654,64.14
+BPXO_BPAOCSZ,float64,Blood Pressure,41333,7611,33722,81.59,4,"4.0, 5.0, 3.0, 2.0",Pending codebook verification,2.0,5.0,0,0.0,0,0.0,0,0.0,7611,63.78
+BPXO_BPXOSY1,float64,Blood Pressure,41333,7517,33816,81.81,137,"135.0, 121.0, 111.0, 110.0, 143.0",Pending codebook verification,61.0,232.0,0,0.0,0,0.0,0,0.0,7517,62.99
+BPXO_BPXODI1,float64,Blood Pressure,41333,7517,33816,81.81,94,"98.0, 84.0, 79.0, 72.0, 76.0",Pending codebook verification,33.0,142.0,0,0.0,0,0.0,0,0.0,7517,62.99
+BPXO_BPXOSY2,float64,Blood Pressure,41333,7505,33828,81.84,136,"131.0, 117.0, 112.0, 120.0, 136.0",Pending codebook verification,59.0,233.0,0,0.0,0,0.0,0,0.0,7505,62.89
+BPXO_BPXODI2,float64,Blood Pressure,41333,7505,33828,81.84,89,"96.0, 76.0, 80.0, 74.0, 100.0",Pending codebook verification,32.0,139.0,0,0.0,0,0.0,0,0.0,7505,62.89
+BPXO_BPXOSY3,float64,Blood Pressure,41333,7480,33853,81.9,146,"132.0, 113.0, 104.0, 115.0, 145.0",Pending codebook verification,50.0,232.0,0,0.0,0,0.0,0,0.0,7480,62.68
+BPXO_BPXODI3,float64,Blood Pressure,41333,7480,33853,81.9,93,"94.0, 76.0, 75.0, 78.0, 104.0",Pending codebook verification,24.0,136.0,0,0.0,0,0.0,0,0.0,7480,62.68
+BPXO_BPXOPLS1,float64,Blood Pressure,41333,7517,33816,81.81,89,"82.0, 72.0, 84.0, 59.0, 80.0",Pending codebook verification,35.0,158.0,0,0.0,0,0.0,0,0.0,7517,62.99
+BPXO_BPXOPLS2,float64,Blood Pressure,41333,7505,33828,81.84,91,"79.0, 71.0, 83.0, 64.0, 80.0",Pending codebook verification,32.0,141.0,0,0.0,0,0.0,0,0.0,7505,62.89
+BPXO_BPXOPLS3,float64,Blood Pressure,41333,7480,33853,81.9,93,"82.0, 73.0, 77.0, 64.0, 86.0",Pending codebook verification,31.0,154.0,0,0.0,0,0.0,0,0.0,7480,62.68
+BPQ_BPQ020,float64,Blood Pressure,41333,8498,32835,79.44,4,"1.0, 2.0, 9.0, 7.0",Pending codebook verification,1.0,9.0,0,0.0,0,0.0,0,0.0,8498,71.21
+BPQ_BPQ030,float64,Blood Pressure,41333,2968,38365,92.82,4,"1.0, 2.0, 9.0, 7.0",Pending codebook verification,1.0,9.0,0,0.0,0,0.0,0,0.0,2968,24.87
+BPQ_BPQ150,float64,Blood Pressure,41333,2969,38364,92.82,3,"1.0, 2.0, 9.0",Pending codebook verification,1.0,9.0,0,0.0,0,0.0,0,0.0,2969,24.88
+BPQ_BPQ080,float64,Blood Pressure,41333,8498,32835,79.44,4,"2.0, 1.0, 9.0, 7.0",Pending codebook verification,1.0,9.0,0,0.0,0,0.0,0,0.0,8498,71.21
+BPQ_BPQ101D,float64,Blood Pressure,41333,8498,32835,79.44,3,"2.0, 1.0, 9.0",Pending codebook verification,1.0,9.0,0,0.0,0,0.0,0,0.0,8498,71.21
+PAQ_PAD790Q,float64,Physical Activity,41333,6439,34894,84.42,26,"3.0, 4.0, 1.0, 5.0, 7.0",Pending codebook verification,1.0,9999.0,0,0.0,0,0.0,0,0.0,6439,53.96
+PAQ_PAD790U,str,Physical Activity,41333,6390,34943,84.54,4,"W, D, M, Y",Pending codebook verification,,,0,0.0,0,0.0,0,0.0,6390,53.55
+PAQ_PAD800,float64,Physical Activity,41333,6390,34943,84.54,57,"45.0, 20.0, 90.0, 30.0, 180.0",Pending codebook verification,1.0,9999.0,0,0.0,0,0.0,0,0.0,6390,53.55
+PAQ_PAD810Q,float64,Physical Activity,41333,3726,37607,90.99,23,"3.0, 1.0, 2.0, 4.0, 5.0",Pending codebook verification,1.0,9999.0,0,0.0,0,0.0,0,0.0,3726,31.22
+PAQ_PAD810U,str,Physical Activity,41333,3686,37647,91.08,4,"W, M, D, Y",Pending codebook verification,,,0,0.0,0,0.0,0,0.0,3686,30.89
+PAQ_PAD820,float64,Physical Activity,41333,3687,37646,91.08,41,"45.0, 60.0, 30.0, 20.0, 40.0",Pending codebook verification,1.0,9999.0,0,0.0,0,0.0,0,0.0,3687,30.9
+PAQ_PAD680,float64,Physical Activity,41333,8130,33203,80.33,51,"360.0, 480.0, 240.0, 60.0, 180.0",Pending codebook verification,1.0,9999.0,0,0.0,0,0.0,0,0.0,8130,68.13
+SMQ_SMQ020,float64,Smoking,41333,8135,33198,80.32,4,"1.0, 2.0, 9.0, 7.0",Pending codebook verification,1.0,9.0,0,0.0,0,0.0,0,0.0,8135,68.17
+SMQ_SMQ040,float64,Smoking,41333,3243,38090,92.15,3,"3.0, 1.0, 2.0",Pending codebook verification,1.0,3.0,0,0.0,0,0.0,0,0.0,3243,27.18
+SMQ_SMD641,float64,Smoking,41333,250,41083,99.4,23,"17.0, 10.0, 7.0, 15.0, 8.0",Pending codebook verification,1.0,99.0,0,0.0,0,0.0,0,0.0,250,2.1
+SMQ_SMD650,float64,Smoking,41333,1185,40148,97.13,32,"6.0, 20.0, 5.0, 3.0, 10.0",Pending codebook verification,1.0,999.0,0,0.0,0,0.0,0,0.0,1185,9.93
+SMQ_SMD100MN,float64,Smoking,41333,463,40870,98.88,2,"1.0, 9.0",Pending codebook verification,1.0,9.0,0,0.0,0,0.0,0,0.0,463,3.88
+SMQ_SMQ621,float64,Smoking,41333,772,40561,98.13,9,"1.0, 2.0, 5.0, 4.0, 7.0",Pending codebook verification,1.0,99.0,0,0.0,0,0.0,0,0.0,772,6.47
+SMQ_SMD630,float64,Smoking,41333,23,41310,99.94,8,"12.0, 14.0, 11.0, 16.0, 15.0",Pending codebook verification,9.0,16.0,0,0.0,0,0.0,0,0.0,23,0.19
+SMQ_SMAQUEX2,float64,Smoking,41333,9015,32318,78.19,2,"1.0, 2.0",Pending codebook verification,1.0,2.0,0,0.0,0,0.0,0,0.0,9015,75.55
+ALQ_ALQ111,float64,Alcohol Consumption,41333,5481,35852,86.74,3,"1.0, 2.0, 9.0",Pending codebook verification,1.0,9.0,0,0.0,0,0.0,0,0.0,5481,45.93
+ALQ_ALQ121,float64,Alcohol Consumption,41333,4086,37247,90.11,12,"2.0, 10.0, 4.0, 8.0, 3.0",Pending codebook verification,1.0,99.0,0,0.0,0,0.0,0,0.0,4086,34.24
+ALQ_ALQ130,float64,Alcohol Consumption,41333,4069,37264,90.16,17,"3.0, 1.0, 2.0, 5.0, 12.0",Pending codebook verification,1.0,999.0,0,0.0,0,0.0,0,0.0,4069,34.1
+ALQ_ALQ142,float64,Alcohol Consumption,41333,2373,38960,94.26,12,"10.0, 6.0, 5.0, 7.0, 1.0",Pending codebook verification,1.0,99.0,0,0.0,0,0.0,0,0.0,2373,19.89
+ALQ_ALQ270,float64,Alcohol Consumption,41333,1346,39987,96.74,12,"10.0, 6.0, 9.0, 1.0, 4.0",Pending codebook verification,1.0,99.0,0,0.0,0,0.0,0,0.0,1346,11.28
+ALQ_ALQ280,float64,Alcohol Consumption,41333,971,40362,97.65,12,"10.0, 7.0, 9.0, 1.0, 6.0",Pending codebook verification,1.0,99.0,0,0.0,0,0.0,0,0.0,971,8.14
+ALQ_ALQ151,float64,Alcohol Consumption,41333,4901,36432,88.14,4,"2.0, 1.0, 9.0, 7.0",Pending codebook verification,1.0,9.0,0,0.0,0,0.0,0,0.0,4901,41.07
+ALQ_ALQ170,float64,Alcohol Consumption,41333,1229,40104,97.03,20,"3.0, 1.0, 8.0, 30.0, 2.0",Pending codebook verification,1.0,999.0,0,0.0,0,0.0,0,0.0,1229,10.3

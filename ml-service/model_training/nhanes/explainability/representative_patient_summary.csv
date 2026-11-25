@@ -1,0 +1,9 @@
+Dataset,Model,Outcome,Outcome_Description,Participant_ID,Actual_Label,Predicted_Label,Predicted_Probability,Decision_Threshold
+hba1c_primary,random_forest,TP,True Positive,132438.0,1,1,0.6940254098113735,0.24
+hba1c_primary,random_forest,TN,True Negative,137784.0,0,0,0.0,0.24
+hba1c_primary,random_forest,FP,False Positive,140931.0,0,1,0.24054012070352115,0.24
+hba1c_primary,random_forest,FN,False Negative,134356.0,1,0,0.2390026691747657,0.24
+fpg_primary,logistic_regression,TP,True Positive,136005.0,1,1,0.9298116227244563,0.45
+fpg_primary,logistic_regression,TN,True Negative,138744.0,0,0,0.04197563242938359,0.45
+fpg_primary,logistic_regression,FP,False Positive,134743.0,0,1,0.4508527502091777,0.45
+fpg_primary,logistic_regression,FN,False Negative,133033.0,1,0,0.4448954202946892,0.45

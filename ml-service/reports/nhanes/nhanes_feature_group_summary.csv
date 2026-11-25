@@ -1,0 +1,13 @@
+feature_group,total_features,features_with_data,fully_missing_features
+Alcohol Consumption,8,8,0
+Blood Pressure,16,16,0
+Body Measurements,21,20,1
+Demographics,33,33,0
+Diabetes Questionnaire,53,53,0
+Glucose Laboratory,5,5,0
+HbA1c Laboratory,2,2,0
+Other / Unclassified,14,14,0
+Physical Activity,7,7,0
+Smoking,8,8,0
+Survey Identification,5,5,0
+Survey Weights,2,2,0

@@ -1,0 +1,14 @@
+{
+    "hba1c_primary": {
+        "model": "random_forest",
+        "calibration": "isotonic",
+        "threshold": 0.09,
+        "selection_metric": "F2_score"
+    },
+    "fpg_primary": {
+        "model": "logistic_regression",
+        "calibration": "sigmoid",
+        "threshold": 0.1,
+        "selection_metric": "F2_score"
+    }
+}

@@ -1,0 +1,46 @@
+{
+    "source_dataset": "nhanes_merged_four_cycles_cleaned.csv",
+    "eligibility_age": "12 years and older",
+    "hba1c": {
+        "total_records": 25729,
+        "cycle_distribution": {
+            "2021-2023": 6715,
+            "2013-2014": 6643,
+            "2015-2016": 6326,
+            "2017-2018": 6045
+        },
+        "class_distribution": {
+            "Normal": 16544,
+            "Prediabetes": 6410,
+            "Diabetes": 2775
+        },
+        "age_minimum": 12.0,
+        "age_maximum": 80.0,
+        "positive_weight_records": 25729
+    },
+    "glucose": {
+        "total_records": 11742,
+        "cycle_distribution": {
+            "2021-2023": 3361,
+            "2013-2014": 2927,
+            "2015-2016": 2743,
+            "2017-2018": 2711
+        },
+        "class_distribution": {
+            "Normal": 5561,
+            "Prediabetes": 4784,
+            "Diabetes": 1397
+        },
+        "age_minimum": 12.0,
+        "age_maximum": 80.0,
+        "positive_weight_records": 11742
+    },
+    "notes": [
+        "Laboratory-range categories are not confirmed diagnoses.",
+        "HbA1c uses WTMEC2YR for H/I/J and WTPH2YR for L.",
+        "Fasting glucose uses WTSAF2YR.",
+        "2021-2023 should not be blindly pooled with earlier cycles for population estimates.",
+        "Pregnancy-related exclusions have not yet been applied.",
+        "Predictor selection and target leakage review remain pending."
+    ]
+}

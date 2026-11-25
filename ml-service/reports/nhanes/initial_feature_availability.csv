@@ -1,0 +1,6 @@
+feature,data_type,available_count,missing_count,availability_percent,missing_percent,unique_values
+RIDAGEYR,float64,25729,0,100.0,0.0,69
+RIAGENDR,float64,25729,0,100.0,0.0,2
+RIDRETH1,float64,25729,0,100.0,0.0,5
+RIDRETH3,float64,25729,0,100.0,0.0,6
+INDFMPIR,float64,22775,2954,88.52,11.48,500

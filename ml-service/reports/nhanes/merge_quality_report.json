@@ -1,0 +1,1007 @@
+{
+    "project": "MediSight AI",
+    "dataset": "NHANES",
+    "cycles": [
+        "2013-2014",
+        "2015-2016",
+        "2017-2018"
+    ],
+    "total_merged_participants": 29400,
+    "total_columns": 111,
+    "duplicate_participants_within_cycles": 0,
+    "cycle_reports": [
+        {
+            "cycle": "2013-2014",
+            "merged_participants": 10175,
+            "components": {
+                "DEMO": {
+                    "rows": 10175,
+                    "columns": 47,
+                    "missing_seqn": 0,
+                    "duplicate_seqn": 0,
+                    "column_names": [
+                        "SEQN",
+                        "SDDSRVYR",
+                        "RIDSTATR",
+                        "RIAGENDR",
+                        "RIDAGEYR",
+                        "RIDAGEMN",
+                        "RIDRETH1",
+                        "RIDRETH3",
+                        "RIDEXMON",
+                        "RIDEXAGM",
+                        "DMQMILIZ",
+                        "DMQADFC",
+                        "DMDBORN4",
+                        "DMDCITZN",
+                        "DMDYRSUS",
+                        "DMDEDUC3",
+                        "DMDEDUC2",
+                        "DMDMARTL",
+                        "RIDEXPRG",
+                        "SIALANG",
+                        "SIAPROXY",
+                        "SIAINTRP",
+                        "FIALANG",
+                        "FIAPROXY",
+                        "FIAINTRP",
+                        "MIALANG",
+                        "MIAPROXY",
+                        "MIAINTRP",
+                        "AIALANGA",
+                        "DMDHHSIZ",
+                        "DMDFMSIZ",
+                        "DMDHHSZA",
+                        "DMDHHSZB",
+                        "DMDHHSZE",
+                        "DMDHRGND",
+                        "DMDHRAGE",
+                        "DMDHRBR4",
+                        "DMDHREDU",
+                        "DMDHRMAR",
+                        "DMDHSEDU",
+                        "WTINT2YR",
+                        "WTMEC2YR",
+                        "SDMVPSU",
+                        "SDMVSTRA",
+                        "INDHHIN2",
+                        "INDFMIN2",
+                        "INDFMPIR"
+                    ]
+                },
+                "DIQ": {
+                    "rows": 9770,
+                    "columns": 54,
+                    "missing_seqn": 0,
+                    "duplicate_seqn": 0,
+                    "column_names": [
+                        "SEQN",
+                        "DIQ010",
+                        "DID040",
+                        "DIQ160",
+                        "DIQ170",
+                        "DIQ172",
+                        "DIQ175A",
+                        "DIQ175B",
+                        "DIQ175C",
+                        "DIQ175D",
+                        "DIQ175E",
+                        "DIQ175F",
+                        "DIQ175G",
+                        "DIQ175H",
+                        "DIQ175I",
+                        "DIQ175J",
+                        "DIQ175K",
+                        "DIQ175L",
+                        "DIQ175M",
+                        "DIQ175N",
+                        "DIQ175O",
+                        "DIQ175P",
+                        "DIQ175Q",
+                        "DIQ175R",
+                        "DIQ175S",
+                        "DIQ175T",
+                        "DIQ175U",
+                        "DIQ175V",
+                        "DIQ175W",
+                        "DIQ175X",
+                        "DIQ180",
+                        "DIQ050",
+                        "DID060",
+                        "DIQ060U",
+                        "DIQ070",
+                        "DIQ230",
+                        "DIQ240",
+                        "DID250",
+                        "DID260",
+                        "DIQ260U",
+                        "DIQ275",
+                        "DIQ280",
+                        "DIQ291",
+                        "DIQ300S",
+                        "DIQ300D",
+                        "DID310S",
+                        "DID310D",
+                        "DID320",
+                        "DID330",
+                        "DID341",
+                        "DID350",
+                        "DIQ350U",
+                        "DIQ360",
+                        "DIQ080"
+                    ],
+                    "matched_to_demo": 9770,
+                    "not_matched_to_demo": 405
+                },
+                "GHB": {
+                    "rows": 6979,
+                    "columns": 2,
+                    "missing_seqn": 0,
+                    "duplicate_seqn": 0,
+                    "column_names": [
+                        "SEQN",
+                        "LBXGH"
+                    ],
+                    "matched_to_demo": 6979,
+                    "not_matched_to_demo": 3196
+                },
+                "GLU": {
+                    "rows": 3329,
+                    "columns": 6,
+                    "missing_seqn": 0,
+                    "duplicate_seqn": 0,
+                    "column_names": [
+                        "SEQN",
+                        "WTSAF2YR",
+                        "LBXGLU",
+                        "LBDGLUSI",
+                        "PHAFSTHR",
+                        "PHAFSTMN"
+                    ],
+                    "matched_to_demo": 3329,
+                    "not_matched_to_demo": 6846
+                }
+            },
+            "important_field_missingness": {
+                "RIDAGEYR": {
+                    "missing": 0,
+                    "missing_percentage": 0.0
+                },
+                "RIAGENDR": {
+                    "missing": 0,
+                    "missing_percentage": 0.0
+                },
+                "LBXGH": {
+                    "missing": 3532,
+                    "missing_percentage": 34.71
+                },
+                "LBXGLU": {
+                    "missing": 7003,
+                    "missing_percentage": 68.83
+                },
+                "DIQ010": {
+                    "missing": 406,
+                    "missing_percentage": 3.99
+                },
+                "WTMEC2YR": {
+                    "missing": 0,
+                    "missing_percentage": 0.0
+                },
+                "WTSAF2YR": {
+                    "missing": 6846,
+                    "missing_percentage": 67.28
+                }
+            },
+            "rxq_summary_available": true
+        },
+        {
+            "cycle": "2015-2016",
+            "merged_participants": 9971,
+            "components": {
+                "DEMO": {
+                    "rows": 9971,
+                    "columns": 47,
+                    "missing_seqn": 0,
+                    "duplicate_seqn": 0,
+                    "column_names": [
+                        "SEQN",
+                        "SDDSRVYR",
+                        "RIDSTATR",
+                        "RIAGENDR",
+                        "RIDAGEYR",
+                        "RIDAGEMN",
+                        "RIDRETH1",
+                        "RIDRETH3",
+                        "RIDEXMON",
+                        "RIDEXAGM",
+                        "DMQMILIZ",
+                        "DMQADFC",
+                        "DMDBORN4",
+                        "DMDCITZN",
+                        "DMDYRSUS",
+                        "DMDEDUC3",
+                        "DMDEDUC2",
+                        "DMDMARTL",
+                        "RIDEXPRG",
+                        "SIALANG",
+                        "SIAPROXY",
+                        "SIAINTRP",
+                        "FIALANG",
+                        "FIAPROXY",
+                        "FIAINTRP",
+                        "MIALANG",
+                        "MIAPROXY",
+                        "MIAINTRP",
+                        "AIALANGA",
+                        "DMDHHSIZ",
+                        "DMDFMSIZ",
+                        "DMDHHSZA",
+                        "DMDHHSZB",
+                        "DMDHHSZE",
+                        "DMDHRGND",
+                        "DMDHRAGE",
+                        "DMDHRBR4",
+                        "DMDHREDU",
+                        "DMDHRMAR",
+                        "DMDHSEDU",
+                        "WTINT2YR",
+                        "WTMEC2YR",
+                        "SDMVPSU",
+                        "SDMVSTRA",
+                        "INDHHIN2",
+                        "INDFMIN2",
+                        "INDFMPIR"
+                    ]
+                },
+                "DIQ": {
+                    "rows": 9575,
+                    "columns": 54,
+                    "missing_seqn": 0,
+                    "duplicate_seqn": 0,
+                    "column_names": [
+                        "SEQN",
+                        "DIQ010",
+                        "DID040",
+                        "DIQ160",
+                        "DIQ170",
+                        "DIQ172",
+                        "DIQ175A",
+                        "DIQ175B",
+                        "DIQ175C",
+                        "DIQ175D",
+                        "DIQ175E",
+                        "DIQ175F",
+                        "DIQ175G",
+                        "DIQ175H",
+                        "DIQ175I",
+                        "DIQ175J",
+                        "DIQ175K",
+                        "DIQ175L",
+                        "DIQ175M",
+                        "DIQ175N",
+                        "DIQ175O",
+                        "DIQ175P",
+                        "DIQ175Q",
+                        "DIQ175R",
+                        "DIQ175S",
+                        "DIQ175T",
+                        "DIQ175U",
+                        "DIQ175V",
+                        "DIQ175W",
+                        "DIQ175X",
+                        "DIQ180",
+                        "DIQ050",
+                        "DID060",
+                        "DIQ060U",
+                        "DIQ070",
+                        "DIQ230",
+                        "DIQ240",
+                        "DID250",
+                        "DID260",
+                        "DIQ260U",
+                        "DIQ275",
+                        "DIQ280",
+                        "DIQ291",
+                        "DIQ300S",
+                        "DIQ300D",
+                        "DID310S",
+                        "DID310D",
+                        "DID320",
+                        "DID330",
+                        "DID341",
+                        "DID350",
+                        "DIQ350U",
+                        "DIQ360",
+                        "DIQ080"
+                    ],
+                    "matched_to_demo": 9575,
+                    "not_matched_to_demo": 396
+                },
+                "GHB": {
+                    "rows": 6744,
+                    "columns": 2,
+                    "missing_seqn": 0,
+                    "duplicate_seqn": 0,
+                    "column_names": [
+                        "SEQN",
+                        "LBXGH"
+                    ],
+                    "matched_to_demo": 6744,
+                    "not_matched_to_demo": 3227
+                },
+                "GLU": {
+                    "rows": 3191,
+                    "columns": 4,
+                    "missing_seqn": 0,
+                    "duplicate_seqn": 0,
+                    "column_names": [
+                        "SEQN",
+                        "WTSAF2YR",
+                        "LBXGLU",
+                        "LBDGLUSI"
+                    ],
+                    "matched_to_demo": 3191,
+                    "not_matched_to_demo": 6780
+                }
+            },
+            "important_field_missingness": {
+                "RIDAGEYR": {
+                    "missing": 0,
+                    "missing_percentage": 0.0
+                },
+                "RIAGENDR": {
+                    "missing": 0,
+                    "missing_percentage": 0.0
+                },
+                "LBXGH": {
+                    "missing": 3645,
+                    "missing_percentage": 36.56
+                },
+                "LBXGLU": {
+                    "missing": 6999,
+                    "missing_percentage": 70.19
+                },
+                "DIQ010": {
+                    "missing": 396,
+                    "missing_percentage": 3.97
+                },
+                "WTMEC2YR": {
+                    "missing": 0,
+                    "missing_percentage": 0.0
+                },
+                "WTSAF2YR": {
+                    "missing": 6780,
+                    "missing_percentage": 68.0
+                }
+            },
+            "rxq_summary_available": true
+        },
+        {
+            "cycle": "2017-2018",
+            "merged_participants": 9254,
+            "components": {
+                "DEMO": {
+                    "rows": 9254,
+                    "columns": 46,
+                    "missing_seqn": 0,
+                    "duplicate_seqn": 0,
+                    "column_names": [
+                        "SEQN",
+                        "SDDSRVYR",
+                        "RIDSTATR",
+                        "RIAGENDR",
+                        "RIDAGEYR",
+                        "RIDAGEMN",
+                        "RIDRETH1",
+                        "RIDRETH3",
+                        "RIDEXMON",
+                        "RIDEXAGM",
+                        "DMQMILIZ",
+                        "DMQADFC",
+                        "DMDBORN4",
+                        "DMDCITZN",
+                        "DMDYRSUS",
+                        "DMDEDUC3",
+                        "DMDEDUC2",
+                        "DMDMARTL",
+                        "RIDEXPRG",
+                        "SIALANG",
+                        "SIAPROXY",
+                        "SIAINTRP",
+                        "FIALANG",
+                        "FIAPROXY",
+                        "FIAINTRP",
+                        "MIALANG",
+                        "MIAPROXY",
+                        "MIAINTRP",
+                        "AIALANGA",
+                        "DMDHHSIZ",
+                        "DMDFMSIZ",
+                        "DMDHHSZA",
+                        "DMDHHSZB",
+                        "DMDHHSZE",
+                        "DMDHRGND",
+                        "DMDHRAGZ",
+                        "DMDHREDZ",
+                        "DMDHRMAZ",
+                        "DMDHSEDZ",
+                        "WTINT2YR",
+                        "WTMEC2YR",
+                        "SDMVPSU",
+                        "SDMVSTRA",
+                        "INDHHIN2",
+                        "INDFMIN2",
+                        "INDFMPIR"
+                    ]
+                },
+                "DIQ": {
+                    "rows": 8897,
+                    "columns": 54,
+                    "missing_seqn": 0,
+                    "duplicate_seqn": 0,
+                    "column_names": [
+                        "SEQN",
+                        "DIQ010",
+                        "DID040",
+                        "DIQ160",
+                        "DIQ170",
+                        "DIQ172",
+                        "DIQ175A",
+                        "DIQ175B",
+                        "DIQ175C",
+                        "DIQ175D",
+                        "DIQ175E",
+                        "DIQ175F",
+                        "DIQ175G",
+                        "DIQ175H",
+                        "DIQ175I",
+                        "DIQ175J",
+                        "DIQ175K",
+                        "DIQ175L",
+                        "DIQ175M",
+                        "DIQ175N",
+                        "DIQ175O",
+                        "DIQ175P",
+                        "DIQ175Q",
+                        "DIQ175R",
+                        "DIQ175S",
+                        "DIQ175T",
+                        "DIQ175U",
+                        "DIQ175V",
+                        "DIQ175W",
+                        "DIQ175X",
+                        "DIQ180",
+                        "DIQ050",
+                        "DID060",
+                        "DIQ060U",
+                        "DIQ070",
+                        "DIQ230",
+                        "DIQ240",
+                        "DID250",
+                        "DID260",
+                        "DIQ260U",
+                        "DIQ275",
+                        "DIQ280",
+                        "DIQ291",
+                        "DIQ300S",
+                        "DIQ300D",
+                        "DID310S",
+                        "DID310D",
+                        "DID320",
+                        "DID330",
+                        "DID341",
+                        "DID350",
+                        "DIQ350U",
+                        "DIQ360",
+                        "DIQ080"
+                    ],
+                    "matched_to_demo": 8897,
+                    "not_matched_to_demo": 357
+                },
+                "GHB": {
+                    "rows": 6401,
+                    "columns": 2,
+                    "missing_seqn": 0,
+                    "duplicate_seqn": 0,
+                    "column_names": [
+                        "SEQN",
+                        "LBXGH"
+                    ],
+                    "matched_to_demo": 6401,
+                    "not_matched_to_demo": 2853
+                },
+                "GLU": {
+                    "rows": 3036,
+                    "columns": 4,
+                    "missing_seqn": 0,
+                    "duplicate_seqn": 0,
+                    "column_names": [
+                        "SEQN",
+                        "WTSAF2YR",
+                        "LBXGLU",
+                        "LBDGLUSI"
+                    ],
+                    "matched_to_demo": 3036,
+                    "not_matched_to_demo": 6218
+                }
+            },
+            "important_field_missingness": {
+                "RIDAGEYR": {
+                    "missing": 0,
+                    "missing_percentage": 0.0
+                },
+                "RIAGENDR": {
+                    "missing": 0,
+                    "missing_percentage": 0.0
+                },
+                "LBXGH": {
+                    "missing": 3209,
+                    "missing_percentage": 34.68
+                },
+                "LBXGLU": {
+                    "missing": 6363,
+                    "missing_percentage": 68.76
+                },
+                "DIQ010": {
+                    "missing": 357,
+                    "missing_percentage": 3.86
+                },
+                "WTMEC2YR": {
+                    "missing": 0,
+                    "missing_percentage": 0.0
+                },
+                "WTSAF2YR": {
+                    "missing": 6218,
+                    "missing_percentage": 67.19
+                }
+            },
+            "rxq_summary_available": true
+        }
+    ],
+    "final_missingness": {
+        "SEQN": {
+            "missing": 0,
+            "missing_percentage": 0.0
+        },
+        "SDDSRVYR": {
+            "missing": 0,
+            "missing_percentage": 0.0
+        },
+        "RIDSTATR": {
+            "missing": 0,
+            "missing_percentage": 0.0
+        },
+        "RIAGENDR": {
+            "missing": 0,
+            "missing_percentage": 0.0
+        },
+        "RIDAGEYR": {
+            "missing": 0,
+            "missing_percentage": 0.0
+        },
+        "RIDAGEMN": {
+            "missing": 27435,
+            "missing_percentage": 93.32
+        },
+        "RIDRETH1": {
+            "missing": 0,
+            "missing_percentage": 0.0
+        },
+        "RIDRETH3": {
+            "missing": 0,
+            "missing_percentage": 0.0
+        },
+        "RIDEXMON": {
+            "missing": 1339,
+            "missing_percentage": 4.55
+        },
+        "RIDEXAGM": {
+            "missing": 17694,
+            "missing_percentage": 60.18
+        },
+        "DMQMILIZ": {
+            "missing": 10986,
+            "missing_percentage": 37.37
+        },
+        "DMQADFC": {
+            "missing": 27769,
+            "missing_percentage": 94.45
+        },
+        "DMDBORN4": {
+            "missing": 0,
+            "missing_percentage": 0.0
+        },
+        "DMDCITZN": {
+            "missing": 9,
+            "missing_percentage": 0.03
+        },
+        "DMDYRSUS": {
+            "missing": 23308,
+            "missing_percentage": 79.28
+        },
+        "DMDEDUC3": {
+            "missing": 21644,
+            "missing_percentage": 73.62
+        },
+        "DMDEDUC2": {
+            "missing": 12343,
+            "missing_percentage": 41.98
+        },
+        "DMDMARTL": {
+            "missing": 12343,
+            "missing_percentage": 41.98
+        },
+        "RIDEXPRG": {
+            "missing": 25693,
+            "missing_percentage": 87.39
+        },
+        "SIALANG": {
+            "missing": 0,
+            "missing_percentage": 0.0
+        },
+        "SIAPROXY": {
+            "missing": 2,
+            "missing_percentage": 0.01
+        },
+        "SIAINTRP": {
+            "missing": 0,
+            "missing_percentage": 0.0
+        },
+        "FIALANG": {
+            "missing": 924,
+            "missing_percentage": 3.14
+        },
+        "FIAPROXY": {
+            "missing": 924,
+            "missing_percentage": 3.14
+        },
+        "FIAINTRP": {
+            "missing": 924,
+            "missing_percentage": 3.14
+        },
+        "MIALANG": {
+            "missing": 8428,
+            "missing_percentage": 28.67
+        },
+        "MIAPROXY": {
+            "missing": 8426,
+            "missing_percentage": 28.66
+        },
+        "MIAINTRP": {
+            "missing": 8425,
+            "missing_percentage": 28.66
+        },
+        "AIALANGA": {
+            "missing": 12144,
+            "missing_percentage": 41.31
+        },
+        "DMDHHSIZ": {
+            "missing": 0,
+            "missing_percentage": 0.0
+        },
+        "DMDFMSIZ": {
+            "missing": 0,
+            "missing_percentage": 0.0
+        },
+        "DMDHHSZA": {
+            "missing": 0,
+            "missing_percentage": 0.0
+        },
+        "DMDHHSZB": {
+            "missing": 0,
+            "missing_percentage": 0.0
+        },
+        "DMDHHSZE": {
+            "missing": 0,
+            "missing_percentage": 0.0
+        },
+        "DMDHRGND": {
+            "missing": 0,
+            "missing_percentage": 0.0
+        },
+        "DMDHRAGE": {
+            "missing": 9254,
+            "missing_percentage": 31.48
+        },
+        "DMDHRBR4": {
+            "missing": 9947,
+            "missing_percentage": 33.83
+        },
+        "DMDHREDU": {
+            "missing": 9944,
+            "missing_percentage": 33.82
+        },
+        "DMDHRMAR": {
+            "missing": 9439,
+            "missing_percentage": 32.11
+        },
+        "DMDHSEDU": {
+            "missing": 18832,
+            "missing_percentage": 64.05
+        },
+        "WTINT2YR": {
+            "missing": 0,
+            "missing_percentage": 0.0
+        },
+        "WTMEC2YR": {
+            "missing": 0,
+            "missing_percentage": 0.0
+        },
+        "SDMVPSU": {
+            "missing": 0,
+            "missing_percentage": 0.0
+        },
+        "SDMVSTRA": {
+            "missing": 0,
+            "missing_percentage": 0.0
+        },
+        "INDHHIN2": {
+            "missing": 969,
+            "missing_percentage": 3.3
+        },
+        "INDFMIN2": {
+            "missing": 926,
+            "missing_percentage": 3.15
+        },
+        "INDFMPIR": {
+            "missing": 3068,
+            "missing_percentage": 10.44
+        },
+        "DIQ010": {
+            "missing": 1159,
+            "missing_percentage": 3.94
+        },
+        "DID040": {
+            "missing": 26918,
+            "missing_percentage": 91.56
+        },
+        "DIQ160": {
+            "missing": 11374,
+            "missing_percentage": 38.69
+        },
+        "DIQ170": {
+            "missing": 10869,
+            "missing_percentage": 36.97
+        },
+        "DIQ172": {
+            "missing": 10869,
+            "missing_percentage": 36.97
+        },
+        "DIQ175A": {
+            "missing": 25731,
+            "missing_percentage": 87.52
+        },
+        "DIQ175B": {
+            "missing": 27596,
+            "missing_percentage": 93.86
+        },
+        "DIQ175C": {
+            "missing": 28911,
+            "missing_percentage": 98.34
+        },
+        "DIQ175D": {
+            "missing": 28083,
+            "missing_percentage": 95.52
+        },
+        "DIQ175E": {
+            "missing": 28976,
+            "missing_percentage": 98.56
+        },
+        "DIQ175F": {
+            "missing": 29288,
+            "missing_percentage": 99.62
+        },
+        "DIQ175G": {
+            "missing": 28651,
+            "missing_percentage": 97.45
+        },
+        "DIQ175H": {
+            "missing": 28700,
+            "missing_percentage": 97.62
+        },
+        "DIQ175I": {
+            "missing": 29177,
+            "missing_percentage": 99.24
+        },
+        "DIQ175J": {
+            "missing": 28980,
+            "missing_percentage": 98.57
+        },
+        "DIQ175K": {
+            "missing": 29301,
+            "missing_percentage": 99.66
+        },
+        "DIQ175L": {
+            "missing": 29230,
+            "missing_percentage": 99.42
+        },
+        "DIQ175M": {
+            "missing": 29016,
+            "missing_percentage": 98.69
+        },
+        "DIQ175N": {
+            "missing": 29127,
+            "missing_percentage": 99.07
+        },
+        "DIQ175O": {
+            "missing": 29014,
+            "missing_percentage": 98.69
+        },
+        "DIQ175P": {
+            "missing": 29071,
+            "missing_percentage": 98.88
+        },
+        "DIQ175Q": {
+            "missing": 28990,
+            "missing_percentage": 98.61
+        },
+        "DIQ175R": {
+            "missing": 29338,
+            "missing_percentage": 99.79
+        },
+        "DIQ175S": {
+            "missing": 29302,
+            "missing_percentage": 99.67
+        },
+        "DIQ175T": {
+            "missing": 29123,
+            "missing_percentage": 99.06
+        },
+        "DIQ175U": {
+            "missing": 29135,
+            "missing_percentage": 99.1
+        },
+        "DIQ175V": {
+            "missing": 29363,
+            "missing_percentage": 99.87
+        },
+        "DIQ175W": {
+            "missing": 29388,
+            "missing_percentage": 99.96
+        },
+        "DIQ175X": {
+            "missing": 29391,
+            "missing_percentage": 99.97
+        },
+        "DIQ180": {
+            "missing": 10869,
+            "missing_percentage": 36.97
+        },
+        "DIQ050": {
+            "missing": 1160,
+            "missing_percentage": 3.95
+        },
+        "DID060": {
+            "missing": 28670,
+            "missing_percentage": 97.52
+        },
+        "DIQ060U": {
+            "missing": 28689,
+            "missing_percentage": 97.58
+        },
+        "DIQ070": {
+            "missing": 25011,
+            "missing_percentage": 85.07
+        },
+        "DIQ230": {
+            "missing": 26918,
+            "missing_percentage": 91.56
+        },
+        "DIQ240": {
+            "missing": 26918,
+            "missing_percentage": 91.56
+        },
+        "DID250": {
+            "missing": 27498,
+            "missing_percentage": 93.53
+        },
+        "DID260": {
+            "missing": 26923,
+            "missing_percentage": 91.57
+        },
+        "DIQ260U": {
+            "missing": 27435,
+            "missing_percentage": 93.32
+        },
+        "DIQ275": {
+            "missing": 26918,
+            "missing_percentage": 91.56
+        },
+        "DIQ280": {
+            "missing": 27492,
+            "missing_percentage": 93.51
+        },
+        "DIQ291": {
+            "missing": 27490,
+            "missing_percentage": 93.5
+        },
+        "DIQ300S": {
+            "missing": 26939,
+            "missing_percentage": 91.63
+        },
+        "DIQ300D": {
+            "missing": 26939,
+            "missing_percentage": 91.63
+        },
+        "DID310S": {
+            "missing": 26936,
+            "missing_percentage": 91.62
+        },
+        "DID310D": {
+            "missing": 26936,
+            "missing_percentage": 91.62
+        },
+        "DID320": {
+            "missing": 26937,
+            "missing_percentage": 91.62
+        },
+        "DID330": {
+            "missing": 27190,
+            "missing_percentage": 92.48
+        },
+        "DID341": {
+            "missing": 26945,
+            "missing_percentage": 91.65
+        },
+        "DID350": {
+            "missing": 26945,
+            "missing_percentage": 91.65
+        },
+        "DIQ350U": {
+            "missing": 27392,
+            "missing_percentage": 93.17
+        },
+        "DIQ360": {
+            "missing": 26937,
+            "missing_percentage": 91.62
+        },
+        "DIQ080": {
+            "missing": 26937,
+            "missing_percentage": 91.62
+        },
+        "LBXGH": {
+            "missing": 10386,
+            "missing_percentage": 35.33
+        },
+        "WTSAF2YR": {
+            "missing": 19844,
+            "missing_percentage": 67.5
+        },
+        "LBXGLU": {
+            "missing": 20365,
+            "missing_percentage": 69.27
+        },
+        "LBDGLUSI": {
+            "missing": 20365,
+            "missing_percentage": 69.27
+        },
+        "PHAFSTHR": {
+            "missing": 26109,
+            "missing_percentage": 88.81
+        },
+        "PHAFSTMN": {
+            "missing": 26109,
+            "missing_percentage": 88.81
+        },
+        "cycle": {
+            "missing": 0,
+            "missing_percentage": 0.0
+        },
+        "DMDHRAGZ": {
+            "missing": 20146,
+            "missing_percentage": 68.52
+        },
+        "DMDHREDZ": {
+            "missing": 20636,
+            "missing_percentage": 70.19
+        },
+        "DMDHRMAZ": {
+            "missing": 20337,
+            "missing_percentage": 69.17
+        },
+        "DMDHSEDZ": {
+            "missing": 24649,
+            "missing_percentage": 83.84
+        }
+    }
+}

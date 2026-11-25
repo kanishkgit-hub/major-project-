@@ -1,0 +1,56 @@
+{
+  "HbA1c": {
+    "rows": 4677,
+    "positives": 115,
+    "selected_C": 1.0,
+    "C_search": [
+      {
+        "C": 1.0,
+        "mean_pr_auc": 0.06793541967823631
+      },
+      {
+        "C": 10.0,
+        "mean_pr_auc": 0.06783466084853598
+      },
+      {
+        "C": 0.1,
+        "mean_pr_auc": 0.06683291773379267
+      }
+    ],
+    "base_log_odds": -3.9886527175868127,
+    "additivity_max_abs_error": 8.881784197001252e-16
+  },
+  "FPG": {
+    "rows": 2599,
+    "positives": 111,
+    "selected_C": 10.0,
+    "C_search": [
+      {
+        "C": 10.0,
+        "mean_pr_auc": 0.1371655067724957
+      },
+      {
+        "C": 1.0,
+        "mean_pr_auc": 0.13658658672791843
+      },
+      {
+        "C": 0.1,
+        "mean_pr_auc": 0.13537189683882855
+      }
+    ],
+    "base_log_odds": -3.475906297003296,
+    "additivity_max_abs_error": 8.881784197001252e-16
+  },
+  "notes": {
+    "created": "2026-11-16T21:43:22",
+    "feature_set": "Anthropometric_3",
+    "features": [
+      "AGE",
+      "BMI",
+      "WAIST"
+    ],
+    "shap_scale": "log-odds (LinearExplainer)",
+    "fit_data": "full primary v2 cohort (explanation only, not evaluation)",
+    "interpretation": "Model attribution, not causation or proof of clinical risk factors."
+  }
+}

@@ -1,0 +1,137 @@
+{
+    "dataset_rows": 25729,
+    "dataset_columns": 178,
+    "target": "HbA1c_Category",
+    "initial_features": [
+        "RIDAGEYR",
+        "RIAGENDR",
+        "RIDRETH1",
+        "RIDRETH3",
+        "INDFMPIR"
+    ],
+    "feature_availability": [
+        {
+            "feature": "RIDAGEYR",
+            "data_type": "float64",
+            "available_count": 25729,
+            "missing_count": 0,
+            "availability_percent": 100.0,
+            "missing_percent": 0.0,
+            "unique_values": 69
+        },
+        {
+            "feature": "RIAGENDR",
+            "data_type": "float64",
+            "available_count": 25729,
+            "missing_count": 0,
+            "availability_percent": 100.0,
+            "missing_percent": 0.0,
+            "unique_values": 2
+        },
+        {
+            "feature": "RIDRETH1",
+            "data_type": "float64",
+            "available_count": 25729,
+            "missing_count": 0,
+            "availability_percent": 100.0,
+            "missing_percent": 0.0,
+            "unique_values": 5
+        },
+        {
+            "feature": "RIDRETH3",
+            "data_type": "float64",
+            "available_count": 25729,
+            "missing_count": 0,
+            "availability_percent": 100.0,
+            "missing_percent": 0.0,
+            "unique_values": 6
+        },
+        {
+            "feature": "INDFMPIR",
+            "data_type": "float64",
+            "available_count": 22775,
+            "missing_count": 2954,
+            "availability_percent": 88.52,
+            "missing_percent": 11.48,
+            "unique_values": 500
+        }
+    ],
+    "unique_value_summary": {
+        "RIDAGEYR": {
+            "80.0": 1326,
+            "16.0": 602,
+            "14.0": 580,
+            "13.0": 547,
+            "12.0": 543,
+            "18.0": 541,
+            "15.0": 533,
+            "17.0": 530,
+            "60.0": 503,
+            "61.0": 485,
+            "19.0": 475,
+            "63.0": 471,
+            "62.0": 459,
+            "64.0": 415,
+            "55.0": 406,
+            "65.0": 398,
+            "66.0": 383,
+            "68.0": 383,
+            "33.0": 377,
+            "59.0": 377
+        },
+        "RIAGENDR": {
+            "2.0": 13463,
+            "1.0": 12266
+        },
+        "RIDRETH1": {
+            "3.0": 10547,
+            "4.0": 4859,
+            "5.0": 3944,
+            "1.0": 3639,
+            "2.0": 2740
+        },
+        "RIDRETH3": {
+            "3.0": 10547,
+            "4.0": 4859,
+            "1.0": 3639,
+            "2.0": 2740,
+            "6.0": 2669,
+            "7.0": 1275
+        },
+        "INDFMPIR": {
+            "5.0": 4180,
+            "1.27": 124,
+            "1.23": 121,
+            "1.22": 114,
+            "0.74": 109,
+            "1.02": 108,
+            "0.87": 102,
+            "1.52": 99,
+            "1.49": 99,
+            "1.03": 98,
+            "1.47": 97,
+            "0.82": 96,
+            "0.88": 95,
+            "1.24": 94,
+            "1.65": 93,
+            "1.09": 92,
+            "1.26": 91,
+            "1.91": 90,
+            "0.7": 88,
+            "2.46": 87
+        }
+    },
+    "target_distribution": {
+        "Normal": 16544,
+        "Prediabetes": 6410,
+        "Diabetes": 2775
+    },
+    "correlation_method": "Spearman",
+    "correlation_features": [
+        "RIDAGEYR",
+        "RIAGENDR",
+        "RIDRETH1",
+        "RIDRETH3",
+        "INDFMPIR"
+    ]
+}

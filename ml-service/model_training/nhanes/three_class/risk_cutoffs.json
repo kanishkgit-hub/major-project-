@@ -1,0 +1,9 @@
+{
+  "high_cut": 0.5146,
+  "moderate_cut": 0.2339,
+  "high_share": 0.15,
+  "moderate_share": 0.35,
+  "chosen_on": "validation",
+  "model": "LogisticRegression",
+  "note": "Prototype for college demo. Not clinically validated."
+}

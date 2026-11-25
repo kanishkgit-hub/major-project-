@@ -1,0 +1,23 @@
+{
+    "script": "70_nested_threshold_selection.py",
+    "timestamp_utc": "2026-11-15T14:31:11.615282+00:00",
+    "outer_folds": 5,
+    "outer_repetitions": 10,
+    "inner_folds": 3,
+    "target_recall": 0.8,
+    "minimum_acceptable_recall": 0.75,
+    "threshold_selection": "Maximum specificity among inner OOF thresholds meeting minimum recall; otherwise maximum achievable recall.",
+    "logistic_regression": {
+        "regularization": "L2",
+        "C_candidates": [
+            0.1,
+            1.0,
+            10.0
+        ]
+    },
+    "tree_parameters_source": "Script 69 fold-specific selected parameters",
+    "smote": false,
+    "class_weighting": false,
+    "total_outer_evaluations": 300,
+    "important_note": "Thresholds are selected from inner out-of-fold predictions within outer training folds. Outer validation labels are not used for threshold selection. These are internal development estimates."
+}

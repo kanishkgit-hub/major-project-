@@ -1,0 +1,194 @@
+{
+    "total_rows": 41333,
+    "total_columns": 174,
+    "duplicate_cycle_seqn": 0,
+    "cycles": [
+        {
+            "cycle": "2013-2014",
+            "components": {
+                "DEMO": {
+                    "rows": 10175,
+                    "columns": 47
+                },
+                "DIQ": {
+                    "rows": 9770,
+                    "columns": 54,
+                    "matched_participants": 9770
+                },
+                "GHB": {
+                    "rows": 6979,
+                    "columns": 2,
+                    "matched_participants": 6979
+                },
+                "GLU": {
+                    "rows": 3329,
+                    "columns": 6,
+                    "matched_participants": 3329
+                }
+            },
+            "missing_optional_components": [
+                "BMX",
+                "BPXO",
+                "BPQ",
+                "PAQ",
+                "SMQ",
+                "ALQ"
+            ],
+            "final_rows": 10175,
+            "final_columns": 107,
+            "output_file": "C:\\Users\\Shubham Raj\\Desktop\\MediSight-Healthcare-Platform-main\\ml-service\\data\\processed\\nhanes\\nhanes_H_participant_data.csv",
+            "prescription_data": {
+                "rows": 20194,
+                "columns": 14,
+                "unique_participants": 10175,
+                "output_file": "C:\\Users\\Shubham Raj\\Desktop\\MediSight-Healthcare-Platform-main\\ml-service\\data\\processed\\nhanes\\nhanes_H_prescription_data.csv"
+            }
+        },
+        {
+            "cycle": "2015-2016",
+            "components": {
+                "DEMO": {
+                    "rows": 9971,
+                    "columns": 47
+                },
+                "DIQ": {
+                    "rows": 9575,
+                    "columns": 54,
+                    "matched_participants": 9575
+                },
+                "GHB": {
+                    "rows": 6744,
+                    "columns": 2,
+                    "matched_participants": 6744
+                },
+                "GLU": {
+                    "rows": 3191,
+                    "columns": 4,
+                    "matched_participants": 3191
+                }
+            },
+            "missing_optional_components": [
+                "BMX",
+                "BPXO",
+                "BPQ",
+                "PAQ",
+                "SMQ",
+                "ALQ"
+            ],
+            "final_rows": 9971,
+            "final_columns": 105,
+            "output_file": "C:\\Users\\Shubham Raj\\Desktop\\MediSight-Healthcare-Platform-main\\ml-service\\data\\processed\\nhanes\\nhanes_I_participant_data.csv",
+            "prescription_data": {
+                "rows": 19647,
+                "columns": 14,
+                "unique_participants": 9971,
+                "output_file": "C:\\Users\\Shubham Raj\\Desktop\\MediSight-Healthcare-Platform-main\\ml-service\\data\\processed\\nhanes\\nhanes_I_prescription_data.csv"
+            }
+        },
+        {
+            "cycle": "2017-2018",
+            "components": {
+                "DEMO": {
+                    "rows": 9254,
+                    "columns": 46
+                },
+                "DIQ": {
+                    "rows": 8897,
+                    "columns": 54,
+                    "matched_participants": 8897
+                },
+                "GHB": {
+                    "rows": 6401,
+                    "columns": 2,
+                    "matched_participants": 6401
+                },
+                "GLU": {
+                    "rows": 3036,
+                    "columns": 4,
+                    "matched_participants": 3036
+                }
+            },
+            "missing_optional_components": [
+                "BMX",
+                "BPXO",
+                "BPQ",
+                "PAQ",
+                "SMQ",
+                "ALQ"
+            ],
+            "final_rows": 9254,
+            "final_columns": 104,
+            "output_file": "C:\\Users\\Shubham Raj\\Desktop\\MediSight-Healthcare-Platform-main\\ml-service\\data\\processed\\nhanes\\nhanes_J_participant_data.csv",
+            "prescription_data": {
+                "rows": 19643,
+                "columns": 14,
+                "unique_participants": 9254,
+                "output_file": "C:\\Users\\Shubham Raj\\Desktop\\MediSight-Healthcare-Platform-main\\ml-service\\data\\processed\\nhanes\\nhanes_J_prescription_data.csv"
+            }
+        },
+        {
+            "cycle": "2021-2023",
+            "components": {
+                "DEMO": {
+                    "rows": 11933,
+                    "columns": 27
+                },
+                "DIQ": {
+                    "rows": 11744,
+                    "columns": 9,
+                    "matched_participants": 11744
+                },
+                "GHB": {
+                    "rows": 7199,
+                    "columns": 3,
+                    "matched_participants": 7199
+                },
+                "GLU": {
+                    "rows": 3996,
+                    "columns": 4,
+                    "matched_participants": 3996
+                },
+                "BMX": {
+                    "rows": 8860,
+                    "columns": 22,
+                    "matched_participants": 8860
+                },
+                "BPXO": {
+                    "rows": 7801,
+                    "columns": 12,
+                    "matched_participants": 7801
+                },
+                "BPQ": {
+                    "rows": 8501,
+                    "columns": 6,
+                    "matched_participants": 8501
+                },
+                "PAQ": {
+                    "rows": 8153,
+                    "columns": 8,
+                    "matched_participants": 8153
+                },
+                "SMQ": {
+                    "rows": 9015,
+                    "columns": 9,
+                    "matched_participants": 9015
+                },
+                "ALQ": {
+                    "rows": 6337,
+                    "columns": 9,
+                    "matched_participants": 6337
+                }
+            },
+            "missing_optional_components": [],
+            "final_rows": 11933,
+            "final_columns": 101,
+            "output_file": "C:\\Users\\Shubham Raj\\Desktop\\MediSight-Healthcare-Platform-main\\ml-service\\data\\processed\\nhanes\\nhanes_L_participant_data.csv",
+            "prescription_data": {
+                "rows": 11933,
+                "columns": 4,
+                "unique_participants": 11933,
+                "output_file": "C:\\Users\\Shubham Raj\\Desktop\\MediSight-Healthcare-Platform-main\\ml-service\\data\\processed\\nhanes\\nhanes_L_prescription_data.csv"
+            }
+        }
+    ]
+}

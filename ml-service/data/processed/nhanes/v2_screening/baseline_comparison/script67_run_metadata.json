@@ -1,0 +1,49 @@
+{
+    "script": "67_compare_baseline_models.py",
+    "timestamp_utc": "2026-11-15T13:01:31.524058+00:00",
+    "datasets": [
+        "HbA1c",
+        "FPG"
+    ],
+    "feature_sets": {
+        "Prevalence_Only": [],
+        "Age_Only": [
+            "AGE"
+        ],
+        "Age_BMI": [
+            "AGE",
+            "BMI"
+        ],
+        "Age_BMI_Waist": [
+            "AGE",
+            "BMI",
+            "WAIST"
+        ],
+        "All_10_Features": [
+            "AGE",
+            "SEX",
+            "BMI",
+            "WAIST",
+            "MEAN_SYSTOLIC_BP",
+            "MEAN_DIASTOLIC_BP",
+            "HYPERTENSION_HISTORY",
+            "SMOKING_HISTORY",
+            "SEDENTARY_TIME",
+            "INCOME_POVERTY_RATIO"
+        ]
+    },
+    "cross_validation": {
+        "n_splits": 5,
+        "n_repeats": 10,
+        "assignment_source": "Script 62"
+    },
+    "model": {
+        "algorithm": "Logistic Regression",
+        "penalty": "L2",
+        "C": 1.0,
+        "class_weight": null,
+        "threshold": 0.5
+    },
+    "total_fold_records": 500,
+    "note": "Prevalence-only predictions use the training-fold positive prevalence. All other configurations use fold-specific imputation, scaling and encoding. These are internal development estimates, not independent external validation."
+}

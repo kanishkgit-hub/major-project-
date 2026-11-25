@@ -1,0 +1,49 @@
+feature_group,feature,column_exists,total_records,available_values,missing_values,availability_percentage
+Demographics,RIDAGEYR,True,41333,39986,1347,96.74
+Demographics,RIAGENDR,True,41333,41333,0,100.0
+Demographics,RIDRETH1,True,41333,41333,0,100.0
+Demographics,RIDRETH3,True,41333,41333,0,100.0
+Demographics,DMDEDUC2,True,41333,24851,16482,60.12
+Demographics,DMDMARTL,True,41333,17057,24276,41.27
+Demographics,INDFMPIR,True,41333,35836,5497,86.7
+Body Measurements,BMX_BMXBMI,True,41333,8471,32862,20.49
+Body Measurements,BMX_BMXHT,True,41333,8499,32834,20.56
+Body Measurements,BMX_BMXWT,True,41333,8754,32579,21.18
+Body Measurements,BMX_BMXWAIST,True,41333,8190,33143,19.81
+Body Measurements,BMX_BMXHIP,True,41333,6776,34557,16.39
+Blood Pressure Measurements,BPXO_BPXOSY1,True,41333,7517,33816,18.19
+Blood Pressure Measurements,BPXO_BPXOSY2,True,41333,7505,33828,18.16
+Blood Pressure Measurements,BPXO_BPXOSY3,True,41333,7480,33853,18.1
+Blood Pressure Measurements,BPXO_BPXOSY4,False,41333,0,41333,0.0
+Blood Pressure Measurements,BPXO_BPXODI1,True,41333,7517,33816,18.19
+Blood Pressure Measurements,BPXO_BPXODI2,True,41333,7505,33828,18.16
+Blood Pressure Measurements,BPXO_BPXODI3,True,41333,7480,33853,18.1
+Blood Pressure Measurements,BPXO_BPXODI4,False,41333,0,41333,0.0
+Hypertension History,BPQ_BPQ020,True,41333,8498,32835,20.56
+Hypertension History,BPQ_BPQ030,True,41333,2968,38365,7.18
+Hypertension History,BPQ_BPQ040A,False,41333,0,41333,0.0
+Hypertension History,BPQ_BPQ050A,False,41333,0,41333,0.0
+Hypertension History,BPQ_BPQ080,True,41333,8498,32835,20.56
+Physical Activity,PAQ_PAQ605,False,41333,0,41333,0.0
+Physical Activity,PAQ_PAQ620,False,41333,0,41333,0.0
+Physical Activity,PAQ_PAQ635,False,41333,0,41333,0.0
+Physical Activity,PAQ_PAQ650,False,41333,0,41333,0.0
+Physical Activity,PAQ_PAQ665,False,41333,0,41333,0.0
+Physical Activity,PAQ_PAD680,True,41333,8130,33203,19.67
+Smoking,SMQ_SMQ020,True,41333,8135,33198,19.68
+Smoking,SMQ_SMQ040,True,41333,3243,38090,7.85
+Smoking,SMQ_SMQ050Q,False,41333,0,41333,0.0
+Smoking,SMQ_SMQ050U,False,41333,0,41333,0.0
+Alcohol,ALQ_ALQ111,True,41333,5481,35852,13.26
+Alcohol,ALQ_ALQ121,True,41333,4086,37247,9.89
+Alcohol,ALQ_ALQ130,True,41333,4069,37264,9.84
+Alcohol,ALQ_ALQ142,True,41333,2373,38960,5.74
+Diabetes History,DIQ_DIQ010,True,41333,39981,1352,96.73
+Diabetes History,DIQ_DIQ050,True,41333,29321,12012,70.94
+Diabetes History,DIQ_DIQ160,True,41333,26048,15285,63.02
+Diabetes History,DIQ_DIQ170,True,41333,18531,22802,44.83
+Diabetes History,DIQ_DIQ172,True,41333,18531,22802,44.83
+Diabetes History,DIQ_DIQ180,True,41333,26835,14498,64.92
+Laboratory Measurements,GHB_LBXGH,True,41333,25729,15604,62.25
+Laboratory Measurements,GLU_LBXGLU,True,41333,12707,28626,30.74
+Laboratory Measurements,GLU_LBDGLUSI,True,41333,12707,28626,30.74
