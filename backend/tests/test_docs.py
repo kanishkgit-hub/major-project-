@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from app import ml
+from app import ml, rag
 from app.main import MeResponse, app
 from app.predictions import _warnings
 from app.schemas import (AuditLogOut, CKDFeatures, DiabetesFeatures, DownloadOut, ExtractedMeasurement,
@@ -24,7 +24,17 @@ def ocr_response(data):
         ExtractedMeasurement.model_validate(item)
 
 
+def rag_answer(data):
+    assert rag.evidence_rows("p", data["sources"]), "the documented RAG answer must produce evidence"
+
+
+def screen_response(data):
+    ml._diabetes_result(data, {})   # raises if the documented service answer is not usable
+
+
 MODELS = {
+    "ScreenResponse": screen_response,
+    "RagAnswer": rag_answer,
     "MeResponse": MeResponse.model_validate,
     "DiabetesRequest": PredictRequest[DiabetesFeatures].model_validate,
     "HeartRequest": PredictRequest[HeartFeatures].model_validate,
@@ -78,3 +88,17 @@ def test_heart_example_response_matches_what_the_stub_really_returns():
     assert response["probability"] == result.probability and response["confidence"] == result.confidence
     assert response["severity"] == result.severity and response["model_version"] == result.model_version
     assert response["warnings"] == _warnings(result)
+
+
+def test_diabetes_example_response_matches_what_the_adapter_returns():
+    first = {}
+    for n, d in EXAMPLES:
+        first.setdefault(n, d)
+    request, service, response = first["DiabetesRequest"], first["ScreenResponse"], first["PredictionOut"]
+    features = DiabetesFeatures.model_validate(request["features"]).model_dump()
+    result = ml._diabetes_result(service, features)
+    assert response["probability"] == result.probability and response["confidence"] == result.confidence
+    assert response["severity"] == result.severity and response["model_version"] == result.model_version
+    assert response["warnings"] == _warnings(result)
+    assert response["explanation"] == {"clinical_explanation": result.explanation,
+                                       "shap_values": result.shap_values, "base_value": result.base_value}

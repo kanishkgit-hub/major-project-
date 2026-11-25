@@ -250,4 +250,24 @@ If a secret key ever lands in a chat or a commit, **rotate it** (Project Setting
 * "The schema was applied to a real Supabase project and a 60+ check isolation script passed." (only if it said `ALL PASSED`)
 * "I tested the API end to end with real logins: a patient cannot read another patient's record (404), cannot list patients (403),
   and cannot create predictions (403)."
-* "Heart and CKD (and Diabetes until Shubham's model is connected) run a labelled placeholder model, and OCR is not connected yet."
+* "Heart and CKD run a labelled placeholder model; Diabetes runs Shubham's NHANES prototype when its service is connected. OCR is not connected yet."
+
+## Optional: connect Shubham's Diabetes model
+
+The backend works without it (Diabetes then uses the labelled placeholder). To use the real model:
+
+1. Take Shubham's `ml-service/model_training/nhanes` folder (it needs the `three_class` folder next to `engine.py`). Make a **separate** Python virtual environment and install exactly `scikit-learn==1.8.0` plus `flask pandas numpy joblib`. The saved model was trained with 1.8.0 and fails or misbehaves with other versions.
+2. In `engine.py`, inside `screen()`, add one line right after `result["top_factors"] = top_factors(X)`:
+
+   ```python
+   result["probability"] = float(MODEL.predict_proba(X)[0, 2])
+   ```
+3. From that folder run `python app.py` (it listens on `http://127.0.0.1:5000`).
+4. In `backend/.env` set `ML_SERVICE_URL=http://127.0.0.1:5000`, restart the backend, then call `POST /predict/diabetes` (inputs in `docs/API.md`).
+
+Only load model files from a source you trust: a `.joblib` file can run code when it is loaded.
+
+## Optional: connect Kanishk's RAG service
+
+Follow the setup steps in Kanishk's repo (Ollama with `nomic-embed-text` and `llama3.2:3b`, the medical PDFs in `medical_knowledge/`, then `python -m src.ingest`). His `src/api.py` must expose `POST /ask` (see `docs/API.md` section 7). Then set `RAG_SERVICE_URL=http://127.0.0.1:<port>` in `backend/.env`, restart the backend and run a prediction as the doctor. Wait a little (the local model is slow), then `GET /predictions/<id>` and look at `evidence`.
+

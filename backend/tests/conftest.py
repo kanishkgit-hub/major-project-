@@ -4,6 +4,9 @@ import os
 os.environ.setdefault("SUPABASE_URL", "http://supabase.test")
 os.environ.setdefault("SUPABASE_ANON_KEY", "anon-test-key")
 os.environ.setdefault("ML_SERVICE_URL", "http://model.test")   # tests patch the HTTP call
+# Empty on purpose: tests must never call a real service just because a developer's .env has one.
+os.environ.setdefault("RAG_SERVICE_URL", "")
+os.environ.setdefault("OCR_SERVICE_URL", "")
 
 import pytest  # noqa: E402
 

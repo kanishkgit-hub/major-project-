@@ -234,9 +234,17 @@ can be linked to only one record (409 if already linked). Returns the updated `P
 
 ### `POST /predict/diabetes`
 
-Runs the Diabetes model, saves the prediction with its **exact inputs**, an explanation, uncertainty warnings
-and a `pending` clinical review. Returns **201**. Without a configured model service (`ML_SERVICE_URL`) this runs a
-clearly labelled placeholder (`model_version: stub-0`), exactly like Heart and CKD.
+Runs Shubham's **NHANES diabetes screening model**, saves the prediction with its **exact inputs**, an explanation,
+warnings and a `pending` clinical review. Returns **201**. Without a configured model service (`ML_SERVICE_URL`) this
+runs a clearly labelled placeholder (`model_version: stub-0`), like Heart and CKD.
+
+**How the model works** (say this honestly when you present it):
+
+* If **HbA1c or fasting glucose** is given, the result comes from medical **cut-offs** (Normal, Prediabetes, Diabetes). That is a rule, not machine learning.
+* If **no lab value** is given, a Logistic Regression (trained on US NHANES data) gives Low, Moderate or High risk.
+* Either way the response carries the machine-learning model's `probability` and its top factors.
+* For a diabetic patient the optional `answers` give a **rule-based** Type 1 / Type 2 / Gestational estimate (hand-written weights, not trained).
+* It is a **prototype, not clinically validated**, and every response says so in `warnings`.
 
 Request (`source_measurement_ids` is optional; if given, **every** ID must be a clinician-verified measurement
 belonging to this patient, otherwise 409):
@@ -246,17 +254,28 @@ belonging to this patient, otherwise 409):
 {
   "patient_id": "2b8f9d1e-5c3a-4e57-9a52-0c7d6f1a8e21",
   "features": {
-    "HighBP": 1, "HighChol": 0, "CholCheck": 1, "BMI": 31.5, "Smoker": 0, "Stroke": 0,
-    "HeartDiseaseorAttack": 0, "PhysActivity": 1, "Fruits": 1, "Veggies": 1,
-    "HvyAlcoholConsump": 0, "AnyHealthcare": 1, "NoDocbcCost": 0, "GenHlth": 3,
-    "MentHlth": 2, "PhysHlth": 0, "DiffWalk": 0, "Sex": 1, "Age": 7, "Education": 5, "Income": 6
+    "age": 52, "gender": "Male", "height_cm": 170, "weight_kg": 92, "waist_cm": 104,
+    "systolic_bp": 138, "diastolic_bp": 88,
+    "hypertension": true, "smoker": false, "already_diagnosed": false
   },
   "source_measurement_ids": []
 }
 ```
 
-Field notes: yes/no fields are `0` or `1`. `BMI` 10 to 100. `GenHlth` 1 (excellent) to 5 (poor). `MentHlth` and `PhysHlth`
-are bad days in the last 30 (0 to 30). `Age` is the BRFSS age group 1 to 13. `Education` 1 to 6, `Income` 1 to 8.
+Field notes:
+
+| Field | Rule |
+|---|---|
+| `age` | Required, 18 to 120 |
+| `gender` | Required, `"Male"` or `"Female"` |
+| `height_cm`, `weight_kg`, `waist_cm` | Required. Ranges 100 to 250, 25 to 300, 40 to 200 |
+| `systolic_bp`, `diastolic_bp` | Required, mmHg. Diastolic must be below systolic |
+| `hypertension`, `smoker`, `already_diagnosed` | Required, `true` or `false` |
+| `hba1c` (3 to 20, %), `fasting_glucose` (40 to 600, mg/dL) | Optional. If present the result uses lab cut-offs |
+| `sedentary_min` (0 to 1440), `income_ratio` (0 to 5) | Optional. If left out the model uses its **training median** and the response warns about it |
+| `answers` | Optional object of follow-up answers for a diabetic patient. Keys: `excess_thirst_urination`, `sudden_weight_loss`, `extreme_fatigue`, `rapid_onset`, `nausea_vomiting`, `slow_healing`, `skin_darkening`, `ketoacidosis`, `insulin_from_start`, `family_type1`, `family_type2`, `pregnancy_diabetes`, `steroid_use`, `pancreas_disease` (all `true`/`false`) and `age_at_diagnosis` (a number) |
+
+Unknown fields are rejected (422), so an old or misspelled field name is an error, not ignored.
 
 Response:
 
@@ -266,25 +285,33 @@ Response:
   "id": "c4a7d2f0-1e63-4b89-a3b5-9f0e7d6c5a12",
   "patient_id": "2b8f9d1e-5c3a-4e57-9a52-0c7d6f1a8e21",
   "disease": "Diabetes",
-  "probability": 0.82,
-  "confidence": 0.82,
-  "severity": "Critical",
-  "model_version": "1.0.0",
-  "warnings": [],
+  "probability": 0.3778,
+  "confidence": 0.6222,
+  "severity": "Moderate",
+  "model_version": "nhanes-logreg-prototype",
+  "warnings": [
+    "Prototype model trained on US NHANES data; not clinically validated.",
+    "Screening estimate only. Get an HbA1c or fasting glucose test.",
+    "Sedentary time was not provided: the model used the training-data median.",
+    "Income ratio was not provided: the model used the training-data median."
+  ],
   "explanation": {
-    "clinical_explanation": "Patient's Diabetes risk is elevated primarily due to High Blood Pressure, BMI of 31.5.",
-    "shap_values": {"HighBP": 0.21, "BMI": 0.12, "Age": 0.08},
-    "base_value": 0.45
+    "clinical_explanation": "Moderate risk (method: ML model (no lab values)). Top factors: Hypertension history (Yes) raised the score; Sex (Male) raised the score; Systolic blood pressure (138) raised the score.",
+    "shap_values": {"Hypertension history": 0.592, "Sex": 0.128, "Systolic blood pressure": 0.081},
+    "base_value": null
   },
   "review_status": "pending",
   "created_at": "2026-11-25T10:00:00+00:00"
 }
 ```
 
-`severity` is `Low` (below 0.2), `Moderate` (below 0.5), `High` (below 0.8) or `Critical`.
-`warnings` are uncertainty notes shown beside the result, for example *"Probability is close to the decision boundary;
-interpret with caution."* If the explanation service fails, the prediction is still saved,
-`explanation` is `null` and a warning says so.
+How the fields are filled:
+
+* `severity` comes from the model's own label: Normal or Low risk is `Low`, Prediabetes or Moderate risk is `Moderate`, Diabetes or High risk is `High`. This model never returns `Critical`.
+* `probability` is the machine-learning model's estimate of the Diabetes class (0 to 1). On the lab path it can disagree with `severity`, and a warning says so.
+* `confidence` is only derived from the probability (the larger of `p` and `1 - p`). It is **not** a calibrated confidence.
+* `shap_values` holds this linear model's per-factor contribution on the log-odds scale (positive raises the risk). They are **not SHAP values**; the field name is shared with the other diseases. `base_value` is `null`.
+* `warnings` are shown beside the result. If the explanation cannot be saved, the prediction is still saved and a warning says so.
 
 ### `POST /predict/heart`
 
@@ -346,16 +373,16 @@ are hidden from them.
   "id": "c4a7d2f0-1e63-4b89-a3b5-9f0e7d6c5a12",
   "patient_id": "2b8f9d1e-5c3a-4e57-9a52-0c7d6f1a8e21",
   "disease": "Diabetes",
-  "probability": 0.82,
-  "confidence": 0.82,
-  "severity": "Critical",
-  "model_version": "1.0.0",
+  "probability": 0.62,
+  "confidence": 0.62,
+  "severity": "High",
+  "model_version": "nhanes-logreg-prototype",
   "warnings": [],
-  "explanation": {"clinical_explanation": "Risk elevated due to High Blood Pressure.", "shap_values": {"HighBP": 0.21}, "base_value": 0.45},
+  "explanation": {"clinical_explanation": "High risk (method: ML model (no lab values)).", "shap_values": {"Hypertension history": 0.592}, "base_value": null},
   "review_status": "accepted",
   "created_at": "2026-11-25T10:00:00+00:00",
   "reviewed_at": "2026-11-25T11:30:00+00:00",
-  "input_features": {"BMI": 31.5, "HighBP": 1}
+  "input_features": {"age": 52, "weight_kg": 92, "hypertension": true}
 }
 ```
 
@@ -372,15 +399,15 @@ the explanation, the retrieved evidence (best match first) and the clinician's d
   "id": "c4a7d2f0-1e63-4b89-a3b5-9f0e7d6c5a12",
   "patient_id": "2b8f9d1e-5c3a-4e57-9a52-0c7d6f1a8e21",
   "disease": "Diabetes",
-  "probability": 0.82,
-  "confidence": 0.82,
-  "severity": "Critical",
-  "model_version": "1.0.0",
-  "warnings": ["Probability is close to the decision boundary; interpret with caution."],
-  "explanation": {"clinical_explanation": "Risk elevated due to High Blood Pressure.", "shap_values": {"HighBP": 0.21}, "base_value": 0.45},
+  "probability": 0.62,
+  "confidence": 0.62,
+  "severity": "High",
+  "model_version": "nhanes-logreg-prototype",
+  "warnings": ["Prototype model trained on US NHANES data; not clinically validated."],
+  "explanation": {"clinical_explanation": "High risk (method: ML model (no lab values)).", "shap_values": {"Hypertension history": 0.592}, "base_value": null},
   "review_status": "overridden",
   "created_at": "2026-11-25T10:00:00+00:00",
-  "input_features": {"BMI": 31.5, "HighBP": 1},
+  "input_features": {"age": 52, "weight_kg": 92, "hypertension": true},
   "source_measurements": [
     {
       "id": "e6c9f4b2-3a85-4d01-85d7-1b2a9f8e7c34", "name": "HbA1c", "value": 7.2, "unit": "%",
@@ -432,7 +459,7 @@ optional `?limit=50`. Pending items are oldest first. The response is a JSON arr
 {
   "prediction_id": "c4a7d2f0-1e63-4b89-a3b5-9f0e7d6c5a12",
   "patient_id": "2b8f9d1e-5c3a-4e57-9a52-0c7d6f1a8e21",
-  "disease": "Diabetes", "severity": "Critical", "probability": 0.82,
+  "disease": "Diabetes", "severity": "High", "probability": 0.62,
   "warnings": [], "decision": "pending", "predicted_at": "2026-11-25T10:00:00+00:00"
 }
 ```
@@ -562,13 +589,40 @@ missing input; the model's prediction, the retrieved evidence and the clinician'
 
 ### Model service (`ML_SERVICE_URL`, Shubham)
 
-If `ML_SERVICE_URL` is set, the Diabetes endpoint calls `POST {ML_SERVICE_URL}/predict` and `POST {ML_SERVICE_URL}/explain`
-with the model's input fields as a flat JSON object. `/predict` must return `probability` (0 to 1), `confidence` (0 to 1),
-`severity` (`Low`, `Moderate`, `High` or `Critical`) and `model_version`; `/explain` must return `shap_values`
-(feature to number), `base_value` and `clinical_explanation`. A 503 from the service means "model not loaded".
+If `ML_SERVICE_URL` is set, the Diabetes endpoint calls Shubham's screening service (`engine.screen`, wrapped by his
+`app.py`): **`POST {ML_SERVICE_URL}/api/screen`** with a JSON object of the fields in the Diabetes request
+(`age`, `gender`, `height_cm`, `weight_kg`, `waist_cm`, `systolic_bp`, `diastolic_bp`, `hypertension`, `smoker`,
+`already_diagnosed`, the optional `sedentary_min`, `income_ratio`, `hba1c`, `fasting_glucose`, and `answers`).
+The patient's name is never sent. The service answers **200** with this JSON:
+
+<!-- model: ScreenResponse -->
+```json
+{
+  "result": "Moderate risk",
+  "path": "ML model (no lab values)",
+  "probability": 0.3778,
+  "note": "Screening estimate only. Get an HbA1c or fasting glucose test.",
+  "top_factors": [
+    {"factor": "Hypertension history", "value": "Yes", "effect": "raised", "contribution": 0.592},
+    {"factor": "Sex", "value": "Male", "effect": "raised", "contribution": 0.128},
+    {"factor": "Systolic blood pressure", "value": "138", "effect": "raised", "contribution": 0.081}
+  ]
+}
+```
+
+What the backend needs from it:
+
+* `result` must be one of `Normal`, `Prediabetes`, `Diabetes`, `Low risk`, `Moderate risk`, `High risk`.
+* **`probability` (0 to 1) must be returned.** The model computes it internally but `engine.screen()` did not return it until the
+  one-line addition `result["probability"] = float(MODEL.predict_proba(X)[0, 2])`. Without it the API answers **502**.
+* Other keys are optional and used when present: `path` (`"Lab cut-offs"` triggers the lab-path warning), `note`,
+  `top_factors`, `diabetes_type`, and `model_version` (default `nhanes-logreg-prototype`).
+* Any non-200 answer, an unreachable service or an unusable body becomes **502** (a 503 stays 503).
+* The saved model file was trained with **scikit-learn 1.8.0** and must be loaded with that exact version; other versions fail or can give wrong results.
+
 If `ML_SERVICE_URL` is empty, every disease runs a labelled placeholder (`stub-0`). To plug in real Heart and CKD
 models, add an HTTP call like `_diabetes` in `backend/app/ml.py` and route to it in `run_model`; nothing else changes.
-The input fields in `backend/app/schemas.py` are a proposal until the real models define them.
+The Heart and CKD input fields in `backend/app/schemas.py` are a proposal until those models define them.
 
 ### OCR / report-processing service (`OCR_SERVICE_URL`, Kanishk)
 
@@ -592,10 +646,41 @@ rows without failing the report. Any non-200 response marks the report `failed`.
 ]}
 ```
 
-### RAG / evidence
+### RAG / evidence (`RAG_SERVICE_URL`, Kanishk)
 
-Not connected yet. The `prediction_evidence` table and the evidence list in `GET /predictions/{id}` are ready;
-they will fill once the RAG service is wired through the backend.
+If `RAG_SERVICE_URL` is set, every saved prediction (Diabetes, Heart or CKD) triggers a **background task** that calls
+`POST {RAG_SERVICE_URL}/ask` with a question built **only from the disease and the risk level** (no patient data is ever sent):
+
+```json
+{"question": "What do the clinical guidelines say about assessing and managing chronic kidney disease in a patient with high screening risk?", "disease": "kidney"}
+```
+
+`disease` is `diabetes`, `heart` or `kidney` (a CKD prediction asks the `kidney` category). The service answers **200** with
+the output of its `ask_medical_question()` function:
+
+<!-- model: RagAnswer -->
+```json
+{
+  "question": "What do the clinical guidelines say ...",
+  "answer": "Long text written by the local LLM.",
+  "sources": [
+    {"document": "KDIGO-Diabetes-CKD-2022.pdf", "page": 32, "category": "kidney", "distance": 0.23,
+     "excerpt": "In adults with diabetes and CKD, SGLT2 inhibitors are recommended."}
+  ]
+}
+```
+
+What the backend does with it:
+
+* Every source with a non-empty `excerpt` becomes one row in `prediction_evidence` (best match first, at most 10, passages cut at 2,000 characters). A source without `excerpt` is skipped, because a citation with no passage cannot be checked.
+* `page` that is not a whole number (for example `"Unknown"`) is saved as empty. A `category` other than `diabetes`, `heart` or `kidney` is saved as empty.
+* The LLM's `answer` text is **not stored or shown**. Evidence is the retrieved passages only, kept separate from the prediction and from the clinician's decision.
+* The rows are saved **as the doctor who ran the prediction**, so Row Level Security still applies.
+* It is **fail-open**: if the service is off, slow (the wait limit is 5 minutes), returns an error or an unusable body, the prediction is unaffected and nothing is saved. There is no retry.
+* Evidence arrives **after** the prediction response, often seconds to minutes later. The UI shows it through `GET /predictions/{id}` when it is there.
+
+The service needs an HTTP wrapper: `src/api.py` in Kanishk's repo is still empty, so `POST /ask` must be added there
+(call `ask_medical_question(question, disease)` and return its dictionary).
 
 ## 8. Database
 
@@ -630,8 +715,9 @@ Apply them with the Supabase CLI (`supabase db push`) or by running the files in
 | `SUPABASE_URL`, `SUPABASE_ANON_KEY` | Everything |
 | `SUPABASE_SERVICE_ROLE_KEY` | File storage, saving OCR results and report status, the audit trail, and looking up an account when linking a patient login. **Server-side only; never expose it to the browser.** |
 | `CORS_ORIGINS` | Comma-separated frontend origins (default `http://localhost:3000`) |
-| `ML_SERVICE_URL` | Diabetes model service. Leave empty to use the labelled placeholder. |
+| `ML_SERVICE_URL` | Base URL of Shubham's Diabetes screening service (for example `http://127.0.0.1:5000`). Leave empty to use the labelled placeholder. |
 | `OCR_SERVICE_URL` | OCR service. Leave empty to disable OCR. |
+| `RAG_SERVICE_URL` | Base URL of Kanishk's RAG service (for example `http://127.0.0.1:8001`). Leave empty for no retrieved evidence. |
 
 ## 10. Notes for the frontend
 
@@ -645,7 +731,8 @@ Apply them with the Supabase CLI (`supabase db push`) or by running the files in
 
 * `PATCH /patients/{id}` replaces the whole `demographics` object instead of merging field by field.
 * Staff-entered measurements and OCR-extracted values live in different places: the timeline endpoint shows only the staff-entered ones.
-* All three diseases run on a **placeholder** model until real models are connected, and the input fields are a proposal to be confirmed.
+* **Diabetes** uses Shubham's NHANES prototype when `ML_SERVICE_URL` is set (US data, not clinically validated). **Heart and CKD** still run a **placeholder** model, and their input fields are a proposal to be confirmed.
+* Retrieved evidence is a background task too: it is lost if the server restarts mid-lookup, has no retry, and the UI must reload to see it.
 * OCR processing runs as a background task: a server restart during OCR leaves a report in `processing`, and there is no retry endpoint yet.
 * Audit logging is **fail-open**: a failed audit write is logged but does not block the request.
 * Rejecting a measurement does not invalidate predictions that already used it. Its source shows `rejected` in the trace view.

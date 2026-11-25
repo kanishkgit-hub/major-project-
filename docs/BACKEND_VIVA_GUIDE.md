@@ -11,7 +11,7 @@ true of the code in this repository. Section 9 lists what **not** to claim.
 > ML/OCR/RAG services and the Supabase PostgreSQL database. It authenticates every user, enforces roles,
 > validates every request, and records an audit trail. Its most important job is **privacy**: one patient
 > must never see another patient's data. It has **24 endpoints**, a self-contained database schema, a 60+ check
-> database isolation test, and **159 automated tests**."
+> database isolation test, and **229 automated tests**."
 
 ## 2. Architecture
 
@@ -48,6 +48,7 @@ instead of every page talking to the database directly.
 | `backend/app/patients.py` | Patient records, dated measurements, linking a patient login |
 | `backend/app/predictions.py`, `ml.py` | Diabetes / Heart / CKD predictions, history |
 | `backend/app/reports.py`, `ocr.py` | Report upload, storage, OCR hand-off |
+| `backend/app/rag.py` | Retrieved guideline evidence for each prediction (background, fail-open) |
 | `backend/app/reviews.py` | Clinician review and the traceability view |
 | `backend/app/audit.py` | Audit trail |
 | `supabase/migrations/20261101000000_core_schema.sql` | Core tables, roles, Row Level Security, signup trigger (runs on a fresh project) |
@@ -63,8 +64,8 @@ instead of every page talking to the database directly.
 | Patient and doctor auth, role-based access | `auth.py`; roles + doctor approval; role matrix in `docs/API.md` |
 | Tables: patients, reports, predictions, explanations, dated measurements | Existing tables + my migration (`reports`, `report_measurements`, `prediction_evidence`, `clinical_reviews`, `api_audit_logs`); timeline endpoint over `vitals` + `lab_results` |
 | Separate Diabetes / Heart / CKD endpoints | `POST /predict/diabetes`, `/heart`, `/ckd` |
-| Secure report upload, OCR/RAG coordination | `POST /reports` + OCR contract |
-| History, audit logging, error handling, tests | `GET /patients/{id}/predictions`, `audit.py`, error envelope, 159 tests |
+| Secure report upload, OCR/RAG coordination | `POST /reports` + OCR contract; `rag.py` saves RAG passages as evidence |
+| History, audit logging, error handling, tests | `GET /patients/{id}/predictions`, `audit.py`, error envelope, 229 tests |
 | Documented endpoints, schema, integration points, `/docs` | `docs/API.md`, migration file, contracts, FastAPI `/docs` |
 | Completion: no patient sees another's data | Row Level Security + 404-instead-of-403 + isolation tests (see section 9 for what is proven) |
 
@@ -78,9 +79,9 @@ instead of every page talking to the database directly.
 
 **404 instead of 403 for hidden data.** If a doctor asks for another hospital's patient, the answer is the same as for a nonexistent ID, so nobody can probe which IDs exist.
 
-**Pydantic validation.** Types and ranges are enforced before any logic runs (BMI 10 to 100, gender from a fixed list, MRN pattern). On patient, measurement and link requests unknown fields are rejected, so a client cannot send `hospital_id` to create records in another hospital.
+**Pydantic validation.** Types and ranges are enforced before any logic runs (for example weight 25 to 300 kg, gender from a fixed list, MRN pattern). On patient, measurement and link requests unknown fields are rejected, so a client cannot send `hospital_id` to create records in another hospital.
 
-**No silent defaults.** The reference MediSight project fills missing model inputs with guesses (BMI 25, "no stroke"). The team rule forbids that, so every model input is required.
+**No silent defaults.** The reference MediSight project fills missing model inputs with guesses (BMI 25, "no stroke"). The team rule forbids that, so every model input is required. The one exception is two optional lifestyle values of the Diabetes model, where the model itself uses its training median: the API then adds an explicit warning to the result.
 
 **Human-in-the-loop.** Model prediction, retrieved evidence and the clinician's decision are three separate records. OCR values start `extracted` and only `verified` ones may feed a model. Overriding a prediction requires a new severity and written notes.
 
@@ -114,6 +115,9 @@ Size cap (10 MB) enforced while reading; the real type is checked from the file'
 **Q: Why are Heart and CKD "stub-0"?**
 Those models belong to Shubham and don't exist yet. I defined the API contract now and put a clearly labelled placeholder behind it (`model_version: stub-0`, plus a warning in every response). When the real model arrives, only `ml.py` changes. Saying so openly is better than faking results.
 
+**Q: What does the Diabetes model do, and how much should we trust it?**
+It is Shubham's prototype trained on US NHANES survey data. With an HbA1c or fasting glucose value it applies medical cut-offs (a rule, not machine learning); without one a Logistic Regression gives Low, Moderate or High risk. The Type 1 / Type 2 estimate is hand-written rules, not a trained model. It is not clinically validated and was not trained on Indian patients, so every response carries that warning, and a doctor must review each prediction. My backend adds the checks around it: complete validated inputs, an explicit warning when it fills a blank optional value with the training median, and the saved exact inputs for traceability. Its explanation is a linear model's per-factor contribution, not SHAP.
+
 **Q: What is SQL injection and are you protected?**
 Yes. All database access goes through PostgREST with typed parameters, not string-built SQL. The one place user text enters a filter (patient search) is restricted to a safe character set, and a test tries `,` `)` `*` `%` and quotes.
 
@@ -121,7 +125,7 @@ Yes. All database access goes through PostgREST with typed parameters, not strin
 An admin cannot read other users' profiles under RLS, but we must verify the target exists and is a `patient` account. It is a narrow lookup whose result is never returned to the caller.
 
 **Q: How did you test it?**
-159 tests with fake Supabase/ML/OCR services. After writing tests I also did **mutation checks**: I deliberately broke each safety rule (e.g. allow any file type, skip the patient-visibility check, stop recording the reviewer) and confirmed a test failed each time. That found two weak tests of my own, which I fixed. CI runs the suite on every push.
+229 tests with fake Supabase/ML/OCR services. After writing tests I also did **mutation checks**: I deliberately broke each safety rule (e.g. allow any file type, skip the patient-visibility check, stop recording the reviewer) and confirmed a test failed each time. That found two weak tests of my own, which I fixed. CI runs the suite on every push.
 
 **Q: What would you do next?**
 Run the migration and the RLS rules against a real Supabase project with two patient accounts (the true isolation test), connect the real OCR/RAG services, make prediction + explanation one transaction, and add a retry queue for OCR.
@@ -139,7 +143,7 @@ So evidence can't be altered. RLS has no update/delete policy, and a trigger blo
    cd backend
    .venv/bin/python -m pytest -q
    ```
-   Expect `159 passed`.
+   Expect `229 passed`.
 2. **Start the server and open `/docs`:**
    ```bash
    SUPABASE_URL=http://localhost SUPABASE_ANON_KEY=x .venv/bin/uvicorn app.main:app --port 8010
@@ -164,7 +168,8 @@ on a separate project first.
 * Do **not** say it was tested against a live Supabase unless you have run it. The Python code is tested with fakes. The migration and the isolation script (`supabase/tests/manual/gateway_isolation_check.sql`) are syntax-checked by a SQL parser but **were never run against a real database** until you run them. If you run the script and every row says PASS, you can say the isolation was verified on a real project.
 * The database rules are enforced by design and by the isolation script, but the script has not been run until you run it.
 * All three models are **placeholders** until Shubham's models are connected; their input fields are a proposal to confirm with him.
-* OCR and RAG services are **not connected yet** (the contract exists); evidence stays empty until they are.
+* The OCR service is **not connected yet** (the contract exists). The RAG hook is built and tested with a fake service; it only fills evidence when Kanishk's service is running and `RAG_SERVICE_URL` is set.
+* Evidence is a background task: it arrives after the prediction, is lost if the server restarts, and has no retry.
 * OCR processing is a background task with no retry queue.
 * A prediction and its explanation are two inserts, not one transaction.
 * Docker image and CI job were written but the Docker build was not run on this machine.

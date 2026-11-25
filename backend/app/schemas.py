@@ -12,29 +12,54 @@ from pydantic import BaseModel, ConfigDict, Field, model_validator
 Bit = Annotated[int, Field(ge=0, le=1, description="0 = no, 1 = yes")]
 
 
+# Follow-up answers for patients who have diabetes. Keys are Shubham's engine.TYPE_QUESTIONS.
+# All are yes/no (true/false) except age_at_diagnosis, which is a number.
+TYPE_ANSWER_KEYS = (
+    "excess_thirst_urination", "sudden_weight_loss", "extreme_fatigue", "rapid_onset", "nausea_vomiting",
+    "slow_healing", "skin_darkening", "ketoacidosis", "insulin_from_start", "age_at_diagnosis",
+    "family_type1", "family_type2", "pregnancy_diabetes", "steroid_use", "pancreas_disease",
+)
+
+
 class DiabetesFeatures(BaseModel):
-    """CDC BRFSS health indicators. Names are the Diabetes model service's input names."""
-    HighBP: Bit
-    HighChol: Bit
-    CholCheck: Bit
-    BMI: float = Field(ge=10, le=100)
-    Smoker: Bit
-    Stroke: Bit
-    HeartDiseaseorAttack: Bit
-    PhysActivity: Bit
-    Fruits: Bit
-    Veggies: Bit
-    HvyAlcoholConsump: Bit
-    AnyHealthcare: Bit
-    NoDocbcCost: Bit
-    GenHlth: int = Field(ge=1, le=5, description="1 = excellent ... 5 = poor")
-    MentHlth: int = Field(ge=0, le=30)
-    PhysHlth: int = Field(ge=0, le=30)
-    DiffWalk: Bit
-    Sex: Bit = Field(description="1 = male, 0 = female")
-    Age: int = Field(ge=1, le=13, description="BRFSS age group")
-    Education: int = Field(ge=1, le=6)
-    Income: int = Field(ge=1, le=8)
+    """NHANES diabetes screening model (Shubham's engine.py). Names and ranges are that model's own.
+
+    Required: body measurements and three yes/no history questions. Optional: lab values (if HbA1c or
+    fasting glucose is given the model uses medical cut-offs instead of machine learning) and two lifestyle
+    values (if blank the model uses the training median; the API warns about it).
+    """
+    model_config = ConfigDict(extra="forbid")   # a typo or an old field name is an error, not ignored
+
+    age: float = Field(ge=18, le=120)
+    gender: Literal["Male", "Female"]
+    height_cm: float = Field(ge=100, le=250)
+    weight_kg: float = Field(ge=25, le=300)
+    waist_cm: float = Field(ge=40, le=200)
+    systolic_bp: float = Field(ge=70, le=260, description="mmHg")
+    diastolic_bp: float = Field(ge=40, le=150, description="mmHg")
+    hypertension: bool = Field(description="told they have high blood pressure")
+    smoker: bool = Field(description="current smoker")
+    already_diagnosed: bool = Field(description="already diagnosed with diabetes")
+    sedentary_min: Optional[float] = Field(default=None, ge=0, le=1440, description="sedentary minutes per day")
+    income_ratio: Optional[float] = Field(default=None, ge=0, le=5, description="income-to-poverty ratio")
+    hba1c: Optional[float] = Field(default=None, ge=3, le=20, description="%")
+    fasting_glucose: Optional[float] = Field(default=None, ge=40, le=600, description="mg/dL")
+    answers: Optional[Dict[str, Any]] = Field(
+        default=None, description="Optional follow-up answers for diabetic patients (see TYPE_ANSWER_KEYS)")
+
+    @model_validator(mode="after")
+    def _check(self):
+        if self.diastolic_bp >= self.systolic_bp:
+            raise ValueError("diastolic_bp must be lower than systolic_bp")
+        for key, value in (self.answers or {}).items():
+            if key not in TYPE_ANSWER_KEYS:
+                raise ValueError(f"unknown follow-up answer '{key}'")
+            if key == "age_at_diagnosis":
+                if isinstance(value, bool) or not isinstance(value, (int, float)) or not 0 <= value <= 120:
+                    raise ValueError("age_at_diagnosis must be a number between 0 and 120")
+            elif not isinstance(value, bool):
+                raise ValueError(f"follow-up answer '{key}' must be true or false")
+        return self
 
 
 class HeartFeatures(BaseModel):

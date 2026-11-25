@@ -14,6 +14,7 @@ class Settings(BaseSettings):
     cors_origins: str = "http://localhost:3000"  # comma-separated list
     ml_service_url: str = ""               # empty = no model service; all three diseases use a labelled placeholder
     ocr_service_url: str = ""              # empty = OCR not connected; reports stay 'uploaded'
+    rag_service_url: str = ""              # empty = no RAG service; predictions get no retrieved evidence
 
 
 @lru_cache

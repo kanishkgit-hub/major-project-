@@ -1,9 +1,9 @@
 from typing import List, Optional
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, HTTPException, Query, Request
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Query, Request
 
-from . import audit
+from . import audit, rag
 from . import supabase as sb
 from .auth import CurrentUser, require_roles
 from .dbutil import first, ok_rows, require_patient, write_failed
@@ -49,12 +49,14 @@ def _warnings(result: ModelResult) -> List[str]:
         w.append("Placeholder model: this result is illustrative and not clinically valid.")
     elif result.explanation is None:
         w.append("Explanation unavailable for this prediction.")
-    if result.confidence < 0.65:
+    w.extend(result.warnings)
+    if result.check_boundary and result.confidence < 0.65:
         w.append("Probability is close to the decision boundary; interpret with caution.")
     return w
 
 
-async def _predict(key: str, req: PredictRequest, user: CurrentUser, request: Request) -> PredictionOut:
+async def _predict(key: str, req: PredictRequest, user: CurrentUser, request: Request,
+                   background: BackgroundTasks) -> PredictionOut:
     patient_id = str(req.patient_id)
     source_ids = sorted({str(i) for i in req.source_measurement_ids})
     features = req.features.model_dump()
@@ -93,6 +95,10 @@ async def _predict(key: str, req: PredictRequest, user: CurrentUser, request: Re
         else:
             warnings.append("Explanation could not be saved.")
 
+    # Guideline passages arrive later (the RAG service is slow); GET /predictions/{id} shows them when ready.
+    # ponytail: a background task is lost if the server restarts, and there is no retry.
+    background.add_task(rag.attach_evidence, row["id"], key, result.severity, user.token)
+
     return PredictionOut(
         id=row["id"], patient_id=row["patient_id"], disease=row["disease"],
         probability=row["probability"], confidence=row["confidence"], severity=row["severity"],
@@ -102,24 +108,24 @@ async def _predict(key: str, req: PredictRequest, user: CurrentUser, request: Re
 
 
 @router.post("/predict/diabetes", response_model=PredictionOut, status_code=201)
-async def predict_diabetes(req: PredictRequest[DiabetesFeatures], request: Request,
+async def predict_diabetes(req: PredictRequest[DiabetesFeatures], request: Request, background: BackgroundTasks,
                            user: CurrentUser = Depends(only_doctors)):
     """Run the Diabetes model for a patient and save the prediction, explanation and a pending review."""
-    return await _predict("diabetes", req, user, request)
+    return await _predict("diabetes", req, user, request, background)
 
 
 @router.post("/predict/heart", response_model=PredictionOut, status_code=201)
-async def predict_heart(req: PredictRequest[HeartFeatures], request: Request,
+async def predict_heart(req: PredictRequest[HeartFeatures], request: Request, background: BackgroundTasks,
                         user: CurrentUser = Depends(only_doctors)):
     """Heart Disease prediction. Uses a placeholder model (stub-0) until Shubham's model is plugged in."""
-    return await _predict("heart", req, user, request)
+    return await _predict("heart", req, user, request, background)
 
 
 @router.post("/predict/ckd", response_model=PredictionOut, status_code=201)
-async def predict_ckd(req: PredictRequest[CKDFeatures], request: Request,
+async def predict_ckd(req: PredictRequest[CKDFeatures], request: Request, background: BackgroundTasks,
                       user: CurrentUser = Depends(only_doctors)):
     """CKD prediction. Uses a placeholder model (stub-0) until Shubham's model is plugged in."""
-    return await _predict("ckd", req, user, request)
+    return await _predict("ckd", req, user, request, background)
 
 
 @router.get("/patients/{patient_id}/predictions", response_model=List[PredictionHistoryItem])

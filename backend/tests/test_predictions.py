@@ -14,9 +14,8 @@ M_OK = "55555555-5555-5555-5555-555555555555"
 M_PENDING = "66666666-6666-6666-6666-666666666666"
 M_OTHER = "77777777-7777-7777-7777-777777777777"
 
-DIABETES = dict(HighBP=1, HighChol=0, CholCheck=1, BMI=31.5, Smoker=0, Stroke=0, HeartDiseaseorAttack=0,
-                PhysActivity=1, Fruits=1, Veggies=1, HvyAlcoholConsump=0, AnyHealthcare=1, NoDocbcCost=0,
-                GenHlth=3, MentHlth=2, PhysHlth=0, DiffWalk=0, Sex=1, Age=7, Education=5, Income=6)
+DIABETES = dict(age=52, gender="Male", height_cm=170, weight_kg=92, waist_cm=104, systolic_bp=138,
+                diastolic_bp=88, hypertension=True, smoker=False, already_diagnosed=False)
 HEART = dict(age=58, sex=1, cp=2, trestbps=150, chol=260, fbs=0, restecg=1, thalach=140, exang=1,
              oldpeak=2.0, slope=1, ca=1, thal=2)
 CKD = dict(age=60, bp=90, sg=1.015, al=2, su=0, bgr=140, bu=60, sc=3.2, sod=135, pot=4.5, hemo=10.5,
@@ -65,7 +64,7 @@ def db(monkeypatch):
 
     async def fake_diabetes(features):
         return ml.ModelResult(0.82, 0.82, "Critical", "1.0.0", "Risk elevated due to High BP.",
-                              {"HighBP": 0.2, "BMI": 0.1}, 0.45)
+                              {"Hypertension history": 0.2, "Sex": 0.1}, 0.45)
 
     monkeypatch.setattr(ml, "_diabetes", fake_diabetes)
     return fake
@@ -96,24 +95,24 @@ def test_diabetes_prediction_saved_with_inputs_explanation_and_warnings(db):
     out = r.json()
     assert out["disease"] == "Diabetes" and out["severity"] == "Critical"
     assert out["review_status"] == "pending"
-    assert out["explanation"]["shap_values"]["HighBP"] == 0.2
+    assert out["explanation"]["shap_values"]["Hypertension history"] == 0.2
     saved = db.saved("/rest/v1/predictions")[0]
-    assert saved["input_features"]["BMI"] == 31.5          # exact inputs kept for traceability
+    assert saved["input_features"]["weight_kg"] == 92       # exact inputs kept for traceability
     assert saved["patient_id"] == PATIENT
     assert len(db.saved("/rest/v1/explanations")) == 1
 
 
 def test_missing_input_is_rejected_not_defaulted(db):
-    f = {k: v for k, v in DIABETES.items() if k != "BMI"}
+    f = {k: v for k, v in DIABETES.items() if k != "waist_cm"}
     r = client.post("/predict/diabetes", json=body(f))
     assert r.status_code == 422
     assert r.json()["error"]["code"] == "validation_error"
-    assert "BMI" in str(r.json()["error"]["details"])
+    assert "waist_cm" in str(r.json()["error"]["details"])
     assert db.posts == []
 
 
 def test_out_of_range_input_is_rejected(db):
-    r = client.post("/predict/diabetes", json=body({**DIABETES, "BMI": 400}))
+    r = client.post("/predict/diabetes", json=body({**DIABETES, "weight_kg": 400}))
     assert r.status_code == 422 and db.posts == []
 
 
@@ -217,6 +216,6 @@ def test_diabetes_uses_a_labelled_placeholder_when_no_model_service_is_configure
 
 
 def test_diabetes_placeholder_risk_rises_with_risk_factors():
-    healthy = ml._stub("diabetes", {**DIABETES, "HighBP": 0, "BMI": 22, "GenHlth": 1, "Age": 3})
-    risky = ml._stub("diabetes", {**DIABETES, "HighBP": 1, "BMI": 38, "GenHlth": 5, "Age": 11})
+    healthy = ml._stub("diabetes", {**DIABETES, "hypertension": False, "waist_cm": 80, "age": 25})
+    risky = ml._stub("diabetes", {**DIABETES, "hypertension": True, "waist_cm": 120, "age": 70})
     assert risky.probability > healthy.probability
