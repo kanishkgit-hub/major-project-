@@ -238,6 +238,10 @@ begin
     res := res || jsonb_build_array(jsonb_build_object('t','Patient A cannot give themselves a hospital','p', ok,'d',''));
 
     execute 'reset role';
+    -- Forget patient A's login first: we are now acting as the database owner (like an administrator or old data),
+    -- and the profile-protection trigger would otherwise still believe patient A is the one making the change.
+    perform set_config('request.jwt.claims', '', true);
+    perform set_config('request.jwt.claim.sub', '', true);
     update public.profiles set hospital_id = v_h1 where id = v_ua;      -- force it (as an administrator would)
     perform set_config('request.jwt.claims', json_build_object('sub', v_ua, 'role', 'authenticated')::text, true);
     perform set_config('request.jwt.claim.sub', v_ua::text, true);
